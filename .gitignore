@@ -5,7 +5,11 @@
 /tmp
 
 # dependencies
-/node_modules
+node_modules/**/*
+
+!node_modules/ember-parse/addon/
+
+
 /bower_components
 
 # misc
@@ -15,3 +19,5 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+.svn/*
+parse/*

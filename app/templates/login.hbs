@@ -1,0 +1,28 @@
+<div class="login-wrapper" layout vertical center>
+    <div class="form-div" layout vertical center>
+        <div layout vertical flex class="form-wrapper">
+            <paper-input-decorator label="Username" floatingLabel="true" error="wrong credentials">
+                {{input type="text" value=username id="username"}}
+            </paper-input-decorator>
+            <paper-input-decorator label="Password" floatingLabel="true" error="wrong credentials">
+                {{input type="password" value=password id="password" action="login"}}
+            </paper-input-decorator>
+            
+            {{#material-collapse duration="1s" class="core-collapse-custom"}}
+                <div>
+                    <paper-input-decorator label="Email" floatingLabel="true" pattern='(\w)@triconinfotech.com'>
+                        {{input type="email" value=email id="email"}}
+                    </paper-input-decorator>
+                </div>
+                {{/material-collapse}}
+            
+            <div horizontal center layout class="button-div">
+                {{#flat-button action='signup' class="if-forgot-button" collapse="true" }}
+                    sign up
+                {{/flat-button}}
+                <div flex></div>
+                <paper-fab icon="check" class="paper-fab-custom" {{action 'login'}}></paper-fab>
+            </div>
+        </div>
+    </div>
+</div>

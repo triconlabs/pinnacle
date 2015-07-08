@@ -1,0 +1,77 @@
+.users-wrapper {
+    .core-toolbar-users {
+        background-color: transparent;
+        color: #3F51B5;
+    }
+    overflow: auto;
+    height: inherit;
+    paper-fab {
+        background-color: #FF4081;
+        color: white;
+        position: absolute;
+        top: -20px;
+        right: 50px;
+    }
+    .question {
+        width: 50%;
+        min-width: 300px;
+        max-width: 400px;
+        height: auto;
+        margin: auto;
+        margin-top: 100px;
+        top: -25%;
+        background-color: #fff;
+    }
+    paper-input-decorator::shadow .unfocused-underline {
+        /* line color when the input is focused */
+        
+        background-color: transparent;
+    }
+    .answers {
+        width: 90%;
+        max-width: 700px;
+        padding-bottom: 100px;
+        height: auto;
+        margin: auto;
+        margin-top: 100px;
+        top: -500px;
+        background-color: #fff;
+    }
+    .user-list {
+        margin-top: 10px;
+        background-color: white;
+        height: 56px;
+        padding: 8px 24px;
+        box-sizing: border-box;
+        position: relative;
+        font-size: 18px;
+        .user-list-name {
+            padding-left: 48px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 16px;
+            display: inline-block;
+        }
+        core-icon {
+            height: 36px;
+            width: 36px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: white;
+            border: 1px solid black;
+        }
+        .check-icon {
+            height: 24px;
+            width: 24px;
+            color: green;
+            border: none;
+        }
+    }
+    .user-list-div {
+        padding: 0px
+    }
+    paper-item::shadow .button-content {
+        padding: 0px;
+    }
+}

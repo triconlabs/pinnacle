@@ -1,0 +1,48 @@
+.login-wrapper {
+    height: inherit;
+    background-color: #F5F5F5;
+    .form-div {
+        width: 60%;
+        background-color: #fff;
+        height: 32%;
+        margin: auto;
+        margin-top: 64px;
+        max-height: 580px;
+        max-width: 512px;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        border-radius: 2px;
+        min-width: 300px;
+        max-width: 500px;
+        border-radius: 5px;
+        .form-wrapper {
+            width: 80%;
+        }
+    }
+    .button-div {
+        margin: auto;
+        margin-bottom: 20px;
+        
+        width: 100%;
+    }
+    paper-input-decorator {
+        width: 80%;
+        margin: auto;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    paper-fab[showing] {
+        -webkit-transform: none;
+        transform: none;
+    }
+    paper-fab {
+        display: inline-block;
+        transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1) 500ms, background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        -webkit-transition: -webkit-transform 500ms cubic-bezier(0.4, 0, 0.2, 1) 500ms, background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        background-color: rgb(74, 181, 74);
+        color: white;
+    }
+}

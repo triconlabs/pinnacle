@@ -1,0 +1,83 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: ''Robotoregular'';
+    background-color: #E0E0E0;
+}
+
+body>.ember-view {
+    height: inherit;
+}
+
+.core-collapse-custom {
+    overflow: hidden;
+    transition: height 1s;
+    -webkit-transition: height 1s;
+}
+
+paper-shadow {
+    transition: all ease-in 0.3s;
+}
+
+.paper-shadow-top {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+paper-input-decorator::shadow .focused-underline {
+    /* line color when the input is focused */
+    
+    background-color: #3F51B5;
+}
+
+paper-input-decorator .focused-underline {
+    /* line color when the input is focused */
+    
+    background-color: #3F51B5;
+}
+
+paper-input-decorator {
+    width: 95%;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+core-header-panel {
+    height: 100%;
+    z-index: 13;
+    >div {
+        background-color: #E0E0E0;
+    }
+}
+
+.core-toolbar-custom {
+    color: #fff;
+    background-color: #3F51B5;
+    z-index: 100;
+    width: 100%;
+}
+
+.drawer-name {
+    color: #3F51B5;
+}
+
+.drawer {
+    background-color: #fff;
+}
+
+.main {
+    overflow: visible;
+}
+
+.tall {
+    background-color: #C5CAE9;
+}
+
+#userimg {
+    height: 40px;
+    border-radius: 50%;
+    width: 40px;
+}

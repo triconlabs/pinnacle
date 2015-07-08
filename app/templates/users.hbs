@@ -1,0 +1,45 @@
+<div class="users-wrapper" fit>
+    <core-toolbar class="core-toolbar-users">
+        {{material-icon action='goBack' icon='arrow-back'}}
+        <div flex> </div>
+        {{#if navbarSearch}}
+            {{#view 'paper-toggle'}}{{/view}}
+            <paper-menu-button>
+                <paper-icon-button class="searchBack" icon="search" noink></paper-icon-button>
+                <paper-dropdown class="dropdown searchBar core-transition core-closed" halign="right" valign="top" flex="true" autoclosedisabled="true" closeattribute="core-overlay-toggle" autofocusdisabled="false">
+                    <paper-item horizontal start-justified layout class="paper-item-custom-navbar">
+                        <paper-icon-button icon="arrow-back" core-overlay-toggle="true"></paper-icon-button>
+                        {{search-input action="search" value=reportSearchText}}
+                        <paper-icon-button icon="close"></paper-icon-button>
+                    </paper-item>
+                </paper-dropdown>
+            </paper-menu-button>
+        {{/if}}
+        {{#if navbarEdit}}
+            {{#if navbarUpload}}
+                {{view uploadfile myupload='frikkinupload' id="admyupload" class="add-my-upload" name="files" multiple="multiple"}}
+                {{#view 'paper-icon' icon="attachment" action="upload" }}{{/view}}
+            {{/if}}
+            {{material-icon action='moreOptions' icon='done'}}
+        {{/if}}
+    </core-toolbar>
+    <paper-shadow class="answers">
+    </paper-shadow>
+    <paper-shadow class="question">
+        <core-toolbar class="core-toolbar-custom">
+        </core-toolbar>
+        {{#each user in model}}
+            <paper-item class="user-list">
+                <div horizontal layout flex class="user-list-div">
+                    <core-icon></core-icon>
+                    <div flex class="user-list-name">
+                        {{user.username}}
+                    </div>
+                    {{#if user.submitted}}
+                        <core-icon icon="check" class="check-icon"></core-icon>
+                    {{/if}}
+                </div>
+            </paper-item>
+        {{/each}}
+    </paper-shadow>
+</div>

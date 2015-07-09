@@ -5,7 +5,7 @@ body {
     margin: 0px;
     padding: 0px;
     font-family: ''Robotoregular'';
-    background-color: #E0E0E0;
+    background-color: rgba(188, 207, 229, 0.34);
 }
 
 body>.ember-view {
@@ -73,11 +73,19 @@ core-header-panel {
 }
 
 .tall {
-    background-color: #C5CAE9;
+    background-color: #3F51B5;
+    .bottom {
+        color: white;
+    }
 }
 
 #userimg {
     height: 40px;
     border-radius: 50%;
     width: 40px;
+}
+
+#upload{
+    height : 0px;
+    width : 0px;
 }

@@ -11,4 +11,5 @@ export default Router.map(function() {
   this.route('auth');
   this.route('assesment');
   this.route('users');
+  this.route('question');
 });

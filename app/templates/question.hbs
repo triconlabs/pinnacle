@@ -1,0 +1,41 @@
+<div class="question-wrapper" fit>
+    <core-toolbar class="core-toolbar-custom">
+        {{material-icon action='toggleDrawer' icon='menu'}}
+        <div flex> </div>
+        {{#if navbarSearch}}
+            {{#view 'paper-toggle'}}{{/view}}
+            <paper-menu-button>
+                <paper-icon-button class="searchBack" icon="search" noink></paper-icon-button>
+                <paper-dropdown class="dropdown searchBar core-transition core-closed" halign="right" valign="top" flex="true" autoclosedisabled="true" closeattribute="core-overlay-toggle" autofocusdisabled="false">
+                    <paper-item horizontal start-justified layout class="paper-item-custom-navbar">
+                        <paper-icon-button icon="arrow-back" core-overlay-toggle="true"></paper-icon-button>
+                        {{search-input action="search" value=reportSearchText}}
+                        <paper-icon-button icon="close"></paper-icon-button>
+                    </paper-item>
+                </paper-dropdown>
+            </paper-menu-button>
+        {{/if}}
+        {{#if navbarEdit}}
+            {{#if navbarUpload}}
+                {{view uploadfile myupload='frikkinupload' id="admyupload" class="add-my-upload" name="files" multiple="multiple"}}
+                {{#view 'paper-icon' icon="attachment" action="upload" }}{{/view}}
+            {{/if}}
+            {{material-icon action='moreOptions' icon='done'}}
+        {{/if}}
+    </core-toolbar>
+    <paper-shadow class="answers">
+    </paper-shadow>
+    <div class="flex"></div>
+    <paper-shadow class="question">
+        
+            <paper-input-decorator  label="Ask a question" floatingLabel="true">
+                <paper-autogrow-textarea>
+                    <textarea name="question">{{question.answer}}</textarea>
+                </paper-autogrow-textarea>
+            </paper-input-decorator>
+        
+        
+        <paper-fab {{bind-attr icon=fab-icon}} class="paper-fab-custom" {{action 'post'}}></paper-fab>
+    </paper-shadow>
+        
+</div>

@@ -18,12 +18,12 @@ export default authRoute.extend({
     loadModel: function() {
         console.log('loadModel')
         var _this = this;
-        return this.store.findAll(this.get('modelType')).then(function() {
+        return this.store.findAll(this.get('modelType') , {"order" : "number"}).then(function() {
             return _this.loadModelFromCache();
         });
     },
     loadModelFromCache: function() {
         console.log('loadModelFromCache')
         return this.store.all(this.get('modelType'));
-    },
+    }
 });

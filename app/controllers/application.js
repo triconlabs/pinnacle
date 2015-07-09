@@ -4,17 +4,25 @@ export default Ember.Controller.extend({
 
     needs: ["login", "test"],
     content: null,
-    user : null,
-    init : function() {
-    	//this.send('reloadData',false);
-        this.set('user' , this.get('session.user'));
+    user: null,
+    admin: function () {
+        if (this.get('user.role') == 'admin') {
+            return true;
+        } else {
+            return false;
+        }
+
+    }.property('user.role'),
+    init: function () {
+        //this.send('reloadData',false);
+        this.set('user', this.get('session.user'));
 
     },
     actions: {
-    	upload: function(){
-    		console.log("clicking upload");
+        upload: function () {
+            console.log("clicking upload");
             Ember.$('#upload').click();
-    	},
+        },
         logout: function () {
             var self = this;
             console.log(this.get('model'));
@@ -30,7 +38,7 @@ export default Ember.Controller.extend({
 
         },
         users: function () {
-          //  this.set('session.user.image' , $('#upload')[0].files[0]);
+            //  this.set('session.user.image' , $('#upload')[0].files[0]);
             $('core-drawer-panel')[0].togglePanel();
             this.transitionToRoute('users');
         },

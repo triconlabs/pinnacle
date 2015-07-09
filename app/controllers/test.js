@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
 
             console.log('answers');
             questions.forEach(function (item, index, enumerable) {
-                Ember.set(item, "answer", answers[Ember.get(item, "number") - 1]);
+                Ember.set(item, "answer", answers[Ember.get(item, "number")]);
 
             });
             console.log("mycontent");
@@ -76,13 +76,13 @@ export default Ember.Controller.extend({
                     console.log(item.get('question') + "!");
                     console.log($("textarea[name='" + item.get('number') + "']").val());
                     var ans = ($("textarea[name='" + item.get('number') + "']").val()).toString();
-                    _response.splice(item.get('number') - 1, 0, ans);
+                    _response.splice(item.get('number'), 0, ans);
                     return ans;
                 });
 
 
 
-                if (user.get('answerId')) {
+                if (user.get('answer')) {
                     console.log("answerId is present")
                     var answer = this.get('controllers.application.model')
                     console.log(answer);
@@ -123,7 +123,7 @@ export default Ember.Controller.extend({
                     $('.answers').css({
                         'top': ' 50px'
                     });
-                    $('paper-fab').css('background-color', "#00C853");
+                    
 
                 });
 

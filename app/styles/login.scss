@@ -1,6 +1,5 @@
 .login-wrapper {
     height: inherit;
-    background-color: #F5F5F5;
     .form-div {
         width: 60%;
         background-color: #fff;
@@ -21,7 +20,6 @@
     .button-div {
         margin: auto;
         margin-bottom: 20px;
-        
         width: 100%;
     }
     paper-input-decorator {
@@ -31,11 +29,12 @@
         margin-bottom: 0px;
     }
     paper-fab[showing] {
+        bottom: -20px;
+        right: -200px;
         -webkit-transform: none;
         transform: none;
     }
     paper-fab {
-        display: inline-block;
         transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1) 500ms, background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
         -webkit-transition: -webkit-transform 500ms cubic-bezier(0.4, 0, 0.2, 1) 500ms, background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
         -webkit-transform: scale(0);

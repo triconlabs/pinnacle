@@ -1,10 +1,8 @@
 <input type="file" id="upload">
 <core-drawer-panel forceNarrow>
     <core-header-panel drawer class="drawer">
-        <core-toolbar class="tall" >
-        
-
-            <div flex class="middle" {{action 'upload'}} ><img {{bind-attr src=user.image}} id="userimg"></div>    
+        <core-toolbar class="tall">
+            <div flex class="middle" {{action 'upload'}}><img {{bind-attr src=user.image}} id="userimg"></div>
             <div flex class="bottom">{{user.username}}</div>
             <div class="drawer-name bottom"></div>
         </core-toolbar>
@@ -12,9 +10,16 @@
             <paper-item>
                 PROFILE
             </paper-item>
-            <paper-item {{action 'users'}}>
-                USERS
-            </paper-item>
+            {{#if admin}}
+                <paper-item {{action 'users'}}>
+                    USERS
+                </paper-item>
+                <paper-item>
+                    {{#link-to 'question'}}
+                        QUESTIONS
+                    {{/link-to}}
+                </paper-item>
+            {{/if}}
             <paper-item {{action 'test'}}>
                 FEEDBACK
             </paper-item>

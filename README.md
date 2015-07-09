@@ -51,3 +51,9 @@ Specify what it takes to deploy your app.
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 
+##Git-flow
+
+* 'master' will be the production branch
+* 'develop' will the main dev branch
+* every new feature will have its own separate branch and can be worked on mutually independently
+* after a feature is built it'll be merged back with 'develop' branch

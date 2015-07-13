@@ -4,25 +4,26 @@ import DS from 'ember-data';
 var attr = DS.attr;
 
 export default ParseUser.extend({
-   submitted : DS.attr(),
-   role : DS.attr('string')
+    submitted: DS.attr(),
+    role: DS.attr('string'),
+    answer: DS.belongsTo('answer', {async: true})
 
-  /**
-   * This model already has this attributes.
-   *
-   * username: attr('string'),
-   * password: attr('password'),
-   * email: attr('string'),
-   * emailVerified: attr('boolean'),
-   * sessionToken: attr('string'),
-   * createdAt: attr('date'),
-   * updatedAt: attr('date'),
-   *
-   *
-   * Add custom attributes below.
-   * For example:
-   *
-   * firstName: attr('string'),
-   * lastName: attr('string')
-   */
+    /**
+     * This model already has this attributes.
+     *
+     * username: attr('string'),
+     * password: attr('password'),
+     * email: attr('string'),
+     * emailVerified: attr('boolean'),
+     * sessionToken: attr('string'),
+     * createdAt: attr('date'),
+     * updatedAt: attr('date'),
+     *
+     *
+     * Add custom attributes below.
+     * For example:
+     *
+     * firstName: attr('string'),
+     * lastName: attr('string')
+     */
 });

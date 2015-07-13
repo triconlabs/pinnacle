@@ -1,5 +1,9 @@
 @import 'main';
-@import 'login';
+@media screen and (min-width: 365px){
+    @import 'login';
+}
+
 @import 'test';
 @import 'users';
+@import 'user';
 @import 'question';

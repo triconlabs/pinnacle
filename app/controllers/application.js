@@ -13,6 +13,14 @@ export default Ember.Controller.extend({
         }
 
     }.property('user.role'),
+    inLogin: function () {
+        if (this.get('currentPath') == 'login') {
+            return false;
+        } else {
+            return true;
+        }
+
+    }.property('currentPath'),
     init: function () {
         //this.send('reloadData',false);
         this.set('user', this.get('session.user'));

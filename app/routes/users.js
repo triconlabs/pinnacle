@@ -4,7 +4,7 @@ import authRoute from '../routes/auth';
 export default authRoute.extend({
     model: function (argument) {
 
-        return this.store.findAll('user');
+        return this.store.find('user');
     },
     setupController: function (controller, model) {
         console.log("model");

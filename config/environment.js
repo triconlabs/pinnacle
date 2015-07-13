@@ -19,6 +19,15 @@ module.exports = function (environment) {
 
         }
     };
+    ENV.contentSecurityPolicy = {
+        'default-src': "'none' 'unsafe-eval'",
+        'script-src': "'self' 'unsafe-eval'",
+        'font-src': "'self' http://fonts.gstatic.com '*'",
+        'connect-src': "'self' 'localhost:4200' https://api.parse.com 'unsafe-eval'",
+        'img-src': "'self'  http://files.parsetfss.com",
+        'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com",
+        'media-src': "'self' 'unsafe-eval'"
+    };
     ENV['ember-parse'] = {
         PARSE_APPLICATION_ID: 'IrcvQfurruulfg3GMOFV9f2pESsBwcJ18wTlc850',
         PARSE_JAVASCRIPT_KEY: 'jFvFlAt54mDMjIZgWdXnISe3ELSsNpw34O6Wk9Sa',

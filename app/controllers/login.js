@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
     }.observes('username', 'password'),
     actions: {
         signup: function () {
+            var input = $('#email')[0];
             $('paper-input-decorator').attr('error', 'required information');
 
             if (!this.get('username')) {
@@ -28,7 +29,7 @@ export default Ember.Controller.extend({
 
                 $('paper-input-decorator')[2].isInvalid = true
             } else if (!input.validity.valid) {
-                $('paper-input-decorator').attr('error', 'singup with your tricon infotech mail-id');
+                $('paper-input-decorator').attr('error', 'signup with your tricon infotech mail-id');
                 $('paper-input-decorator')[2].isInvalid = true
             } else {
                 var self = this;

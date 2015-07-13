@@ -3,7 +3,7 @@
     .form-div {
         width: 60%;
         background-color: #fff;
-        height: 32%;
+        height: auto;
         margin: auto;
         margin-top: 64px;
         max-height: 580px;
@@ -15,12 +15,13 @@
         border-radius: 5px;
         .form-wrapper {
             width: 80%;
+            margin: auto;
+            margin-bottom: 10px;
         }
     }
     .button-div {
         margin: auto;
-        margin-bottom: 20px;
-        width: 100%;
+        width: 80%;
     }
     paper-input-decorator {
         width: 80%;
@@ -29,8 +30,9 @@
         margin-bottom: 0px;
     }
     paper-fab[showing] {
+        position: absolute;
+        right: 20px;
         bottom: -20px;
-        right: -200px;
         -webkit-transform: none;
         transform: none;
     }

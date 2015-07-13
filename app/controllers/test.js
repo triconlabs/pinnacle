@@ -82,7 +82,7 @@ export default Ember.Controller.extend({
 
 
 
-                if (user.get('answer')) {
+                if (user.get('answerId')) {
                     console.log("answerId is present")
                     var answer = this.get('controllers.application.model')
                     console.log(answer);

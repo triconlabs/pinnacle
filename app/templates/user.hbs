@@ -36,6 +36,7 @@
             </div>
         </paper-item>
     </paper-shadow>
+    {{#if mycontent}}
     <paper-shadow class="question">
         {{#each question in mycontent}}
             <paper-input-decorator {{bind-attr label=question.question}} disabled floatingLabel="true">
@@ -45,4 +46,5 @@
             </paper-input-decorator>
         {{/each}}
     </paper-shadow>
+    {{/if}}
 </div>

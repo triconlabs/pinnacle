@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
             console.log("mycontent");
             return questions;
         }
-        return this.get('model');
+        return false;
     }.property('model'),
     actions: {
         goBack: function () {

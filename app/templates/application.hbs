@@ -1,34 +1,39 @@
 <input type="file" id="upload">
 <core-drawer-panel forceNarrow>
-{{#if inLogin}}
-    <core-header-panel drawer class="drawer">
-        <core-toolbar class="tall">
-            <div flex class="middle" {{action 'upload'}}><img {{bind-attr src=user.image}} id="userimg"></div>
-            <div flex class="bottom">{{user.username}}</div>
-            <div class="drawer-name bottom"></div>
-        </core-toolbar>
-        <div>
-            <paper-item>
-                PROFILE
-            </paper-item>
-            {{#if admin}}
-                <paper-item {{action 'users'}}>
-                    USERS
-                </paper-item>
+    {{#if inLogin}}
+        <core-header-panel drawer class="drawer">
+            <core-toolbar class="tall">
+                <div flex class="middle" {{action 'upload'}}><img src= {{user.image}} id="userimg"></div>
+                <div flex class="bottom">{{user.username}}</div>
+                <div class="drawer-name bottom"></div>
+            </core-toolbar>
+            <div>
                 <paper-item>
-                    {{#link-to 'question'}}
+                    PROFILE
+                </paper-item>
+                {{#if admin}}
+                    <paper-item {{action 'users'}}>
+                        USERS
+                    </paper-item>
+                    <paper-item>
+                        {{#link-to 'question'}}
+                            QUESTIONS
+                        {{/link-to}}
+                    </paper-item>
+                {{/if}}
+                <paper-item>
+                    {{#link-to 'wordcloud'}}
                         QUESTIONS
                     {{/link-to}}
                 </paper-item>
-            {{/if}}
-            <paper-item {{action 'test'}}>
-                FEEDBACK
-            </paper-item>
-            <paper-item {{action 'logout'}}>
-                LOGOUT
-            </paper-item>
-        </div>
-    </core-header-panel>
+                <paper-item {{action 'test'}}>
+                    FEEDBACK
+                </paper-item>
+                <paper-item {{action 'logout'}}>
+                    LOGOUT
+                </paper-item>
+            </div>
+        </core-header-panel>
     {{/if}}
     <div main class="main">
         {{outlet }}

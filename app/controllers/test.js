@@ -3,8 +3,17 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     'fab-icon': "chevron-right",
     'submitted': false,
+    'question': "question1",
     needs: ['answer', 'application'],
     content: null,
+    formattedTime: function () {
+        var dateB = moment();
+        var time = this.get('controllers.application.model.updatedAt')
+        var dateC = moment(time);
+
+        console.log(dateC.from(dateB));
+        return dateC.from(dateB);
+    }.property('controllers.application.model.updatedAt'),
     mycontent: function () {
         console.log(this.get('model'));
 
@@ -66,6 +75,8 @@ export default Ember.Controller.extend({
         },
         answer: function () {
             var self = this;
+
+
             if (this.get('submitted')) {
                 self.send('submit');
             } else {
@@ -113,17 +124,18 @@ export default Ember.Controller.extend({
                     self.get('session.user').save().then(function () {
                         console.log("shit is happening");
                     })
+                    console.log($('.answers').height());
                     self.set('submitted',
                         'true');
                     self.set("fab-icon", "expand-less");
-                    $('.test-wrapper').css('overflow', "hidden");
+                    $('.test-wrapper').css('overflow', 'hidden');
                     $('.question').css({
-                        'top': ' 500px'
+                        'top': $('body').height() - 420 + 'px'
                     });
                     $('.answers').css({
-                        'top': ' 50px'
+                        'top': ' 0px'
                     });
-                    
+
 
                 });
 
@@ -133,7 +145,7 @@ export default Ember.Controller.extend({
             console.log("expand");
             this.set("submitted", false);
             this.set("fab-icon", "chevron-right");
-            $('.test-wrapper').css('overflow', "overlay");
+            $('.test-wrapper').css('overflow', 'overlay');
             $('.question').css({
                 'top': ' -200px'
             });

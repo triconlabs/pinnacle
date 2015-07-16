@@ -14,6 +14,10 @@
     "qunit": "~1.17.1",
     "polymer": "Polymer/polymer#~0.5.2",
     "core-elements": "Polymer/core-elements#~0.5.2",
-    "paper-elements": "Polymer/paper-elements#~0.5.2"
+    "paper-elements": "Polymer/paper-elements#~0.5.2",
+    "d3-cloud": "~1.1.2"
+  },
+  "devDependencies": {
+    "d3-cloud": "~1.1.2"
   }
 }

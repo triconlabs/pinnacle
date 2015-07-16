@@ -23,9 +23,19 @@
             {{material-icon action='moreOptions' icon='done'}}
         {{/if}}
     </core-toolbar>
-    <paper-shadow class="answers">
+    <paper-shadow class="answers" horizontal layout center>
+        <paper-item class="user-list" horizontal layout center flex>
+            <div horizontal layout flex center class="user-list-div">
+                <core-icon  src={{controllers.application.user.image}}></core-icon>
+                <div flex class="user-list-name">
+                    {{controllers.application.user.username}}
+                   {{formattedTime}}
+                </div>
+                {{#if controllers.application.user.submitted}}
+                {{/if}}
+            </div>
+        </paper-item>
     </paper-shadow>
-    <div class="flex"></div>
     <paper-shadow class="question">
         {{#each question in mycontent}}
             <paper-input-decorator {{bind-attr label=question.question}} floatingLabel="true">
@@ -39,5 +49,5 @@
         </paper-dialog>
         <paper-fab {{bind-attr icon=fab-icon}} class="paper-fab-custom" {{action 'answer'}}></paper-fab>
     </paper-shadow>
-        <paper-button {{action 'logout'}} raised>upload</paper-button>
+    <paper-button {{action 'logout'}} raised>upload</paper-button>
 </div>

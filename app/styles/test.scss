@@ -1,6 +1,39 @@
 .test-wrapper {
     overflow: overlay;
     height: inherit;
+    .user-list {
+        
+        background-color: white;
+        height: 56px;
+        padding: 8px 24px;
+        box-sizing: border-box;
+        position: relative;
+        font-size: 18px;
+        .user-list-name {
+            padding-left: 48px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 16px;
+            display: inline-block;
+        }
+        core-icon {
+            height: 36px;
+            width: 36px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: white;
+        }
+        .check-icon {
+            height: 24px;
+            width: 24px;
+            color: green;
+            border: none;
+        }
+    }
+    .user-list-div {
+        padding: 0px
+    }
     paper-fab {
         background-color: #FF4081;
         color: white;
@@ -27,9 +60,7 @@
     .answers {
         width: 90%;
         max-width: 700px;
-        padding-bottom: 100px;
-        padding-top: 30px;
-        height: auto;
+        height: 100px;
         margin: auto;
         margin-top: 100px;
         top: -500px;
@@ -39,9 +70,8 @@
 
 @media screen and (max-width: 420px) {
     .test-wrapper {
-        .question {
+        .question  , .answers{
             width: 100%;
-            margin-top : 20px;
         }
     }
 }

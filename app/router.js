@@ -6,13 +6,14 @@ var Router = Ember.Router.extend({
 });
 
 export default Router.map(function () {
-    this.route('test');
-    this.route('login');
-    this.route('auth');
-    this.route('assesment');
-    this.route('users');
-    this.route('question');
-    this.route('user', {
-        path: '/user/:user_id'
-    });
+  this.route('test');
+  this.route('login');
+  this.route('auth');
+  this.route('assesment');
+  this.route('users');
+  this.route('question');
+  this.route('user', {
+      path: '/user/:user_id'
+  });
+  this.route('wordcloud');
 });

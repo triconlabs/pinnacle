@@ -23,7 +23,8 @@
             {{material-icon action='moreOptions' icon='done'}}
         {{/if}}
     </core-toolbar>
-    <paper-shadow class="question">
+    {{#view 'slide-in'}}
+  
         <core-toolbar class="core-toolbar-custom">
         </core-toolbar>
         {{#each user in model}}
@@ -42,5 +43,5 @@
                 </paper-item>
             {{/link-to}}
         {{/each}}
-    </paper-shadow>
+    {{/view}}
 </div>

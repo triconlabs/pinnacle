@@ -19,4 +19,32 @@
         </div>
         <paper-fab icon="arrow-forward" class="paper-fab-custom" {{action 'login'}}></paper-fab>
     </div>
+    <paper-shadow class="form-div" layout="" center="">
+   <paper-fab icon="arrow-forward" class="paper-fab-custom" {{action="" 'login'}}="" role="button" tabindex="0" aria-label="add" style="position: absolute; bottom: -20px; right: 30px; transition: all 0.3s ease-in; -webkit-transition: all 0.3s ease-in;"></paper-fab>
+  <paper-item noink="" tabindex="0" class="" style="
+    transition: all ease-in 0.3s;
+"><paper-button noink="" role="button" tabindex="0" style="
+    transition: all ease-in 0.3s;
+">LOGIN</paper-button></paper-item>
+        <div layout="" vertical="" flex="" class="form-wrapper" style="
+    height: 100%;
+    position: relative;
+">
+            <paper-input-decorator layout="" vertical="" label="Username" floatinglabel="true" error="wrong credentials" style="
+    font-size: 14px;
+">
+                <input id="username" class="ember-view ember-text-field" type="text" placeholder="" aria-label="Username">
+            </paper-input-decorator>
+            <paper-input-decorator layout="" vertical="" label="Password" floatinglabel="true" error="wrong credentials" style="
+    font-size: 14px;
+    /* border: solid; */
+">
+                <input id="password" class="ember-view ember-text-field" type="password" placeholder="" aria-label="Password">
+            </paper-input-decorator>
+            
+        </div>
+        
+        
+        
+    </paper-shadow>
 </div>

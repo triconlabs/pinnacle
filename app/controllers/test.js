@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
     'fab-icon': "chevron-right",
     'submitted': false,
     'question': "question1",
+    'z': 4,
     needs: ['answer', 'application'],
     content: null,
     formattedTime: function () {

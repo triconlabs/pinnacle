@@ -36,13 +36,15 @@
             </div>
         </paper-item>
     </paper-shadow>
-    <paper-shadow class="question">
+    <paper-shadow z={{z}} class="question">
         {{#each question in mycontent}}
+        {{#if question.show}}
             <paper-input-decorator {{bind-attr label=question.question}} floatingLabel="true">
                 <paper-autogrow-textarea>
                     <textarea {{bind-attr name=question.number}}>{{question.answer}}</textarea>
                 </paper-autogrow-textarea>
             </paper-input-decorator>
+            {{/if}}
         {{/each}}
         <paper-dialog transition="core-transition-bottom" class="dialog">
             <p>Some content</p>

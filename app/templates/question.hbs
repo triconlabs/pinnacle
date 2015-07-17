@@ -37,5 +37,20 @@
         
         <paper-fab {{bind-attr icon=fab-icon}} class="paper-fab-custom" {{action 'post'}}></paper-fab>
     </paper-shadow>
+
+        <paper-shadow class="question">
+        <paper-item noink><paper-button>questions</paper-button></paper-item>
+        {{#each question in model}}
+        <paper-item noink>
+        {{radio-button toggles="true" checked=question.show question=question}}
+      
+        <span {{bind-attr class="question.show:question-show:question-hide"}}>
+         {{question.question}}
+         </span>
+            </paper-item>
+        {{/each}}
+        
+       
+    </paper-shadow>
         
 </div>

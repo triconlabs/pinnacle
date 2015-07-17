@@ -9,6 +9,9 @@ export default Ember.Controller.extend({
 			question.save().then(function(){
 				alert("successfully added question");
 			})
+		},
+		toggle : function(question){
+			question.toggleProperty('show');
 		}
 	}
 });

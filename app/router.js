@@ -16,4 +16,5 @@ export default Router.map(function () {
       path: '/user/:user_id'
   });
   this.route('wordcloud');
+  this.route('profile');
 });

@@ -23,25 +23,21 @@
             {{material-icon action='moreOptions' icon='done'}}
         {{/if}}
     </core-toolbar>
-    <paper-shadow class="answers">
-    </paper-shadow>
-    <div class="flex"></div>
-    <paper-shadow class="question">
-        
-            <paper-input-decorator  label="Ask a question" floatingLabel="true">
-                <paper-autogrow-textarea>
-                    <textarea name="question">{{question.answer}}</textarea>
-                </paper-autogrow-textarea>
-            </paper-input-decorator>
-        
-        
-        <paper-fab {{bind-attr icon=fab-icon}} class="paper-fab-custom" {{action 'post'}}></paper-fab>
-    </paper-shadow>
+    
 
-        <paper-shadow class="question">
+    {{#view 'slide-in'}}
+        <paper-fab {{bind-attr icon=fab-icon}} class="paper-fab-custom" {{action 'post'}}></paper-fab>
+    
         <paper-item noink><paper-button>questions</paper-button></paper-item>
+          <paper-item noink class="post-question" >
+            
+      
+            <span class="post-span">
+             <paper-input name="question" label="Ask a question"></paper-input>
+             </span>
+            </paper-item>
         {{#each question in model}}
-        <paper-item noink>
+        <paper-item noink {{action  'runCloudCode' question.number}} >
         {{radio-button toggles="true" checked=question.show question=question}}
       
         <span {{bind-attr class="question.show:question-show:question-hide"}}>
@@ -51,6 +47,6 @@
         {{/each}}
         
        
-    </paper-shadow>
-        
+    
+        {{/view}}
 </div>

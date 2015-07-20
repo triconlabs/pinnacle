@@ -36,7 +36,8 @@
             </div>
         </paper-item>
     </paper-shadow>
-    <paper-shadow z={{z}} class="question">
+    
+    {{#view 'slide-in'}}
         {{#each question in mycontent}}
         {{#if question.show}}
             <paper-input-decorator {{bind-attr label=question.question}} floatingLabel="true">
@@ -50,6 +51,7 @@
             <p>Some content</p>
         </paper-dialog>
         <paper-fab {{bind-attr icon=fab-icon}} class="paper-fab-custom" {{action 'answer'}}></paper-fab>
-    </paper-shadow>
+        {{/view}}
+    
     <paper-button {{action 'logout'}} raised>upload</paper-button>
 </div>

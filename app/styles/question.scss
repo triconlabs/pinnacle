@@ -2,14 +2,30 @@
     overflow: overlay;
     height: inherit;
     paper-fab {
-        background-color: #FF4081;
+        background-color: #ED2553;
         color: white;
         position: absolute;
-        bottom: -20px;
+        top: -20px;
         right: 50px;
+    }
+    .post-question {
+        margin-top: 0px;
+        margin-left: 0px;
+        margin: auto;
+        width: 85%;
+        display: none;
+    }
+    .post-span {
+        width: 100%;
+        paper-input {
+            width: 100%;
+        }
     }
     paper-radio-button {
         display: inlineblock;
+    }
+    .unfocused-underline {
+        background-color: rgba(202, 187, 187, 0.53)
     }
     paper-item {
         margin-left: 20px;
@@ -20,10 +36,12 @@
         max-width: 700px;
         padding-bottom: 30px;
         padding-top: 30px;
+        border-radius: 5px;
         height: auto;
+        transition : none;
         margin: auto;
-        margin-top: 100px;
-        top: -25%;
+        margin-top: 50px;
+        
         background-color: #fff;
     }
     paper-input-decorator::shadow .unfocused-underline {

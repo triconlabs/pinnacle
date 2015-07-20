@@ -1,7 +1,7 @@
 .users-wrapper {
     .core-toolbar-users {
         background-color: transparent;
-        color: #3F51B5;
+        color: #fff;
     }
     overflow: auto;
     height: inherit;
@@ -17,6 +17,8 @@
         min-width: 300px;
         max-width: 400px;
         height: auto;
+        padding-bottom : 20px;
+        transition : none;
         margin: auto;
         margin-top: 100px;
         background-color: #fff;

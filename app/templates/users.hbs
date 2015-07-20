@@ -23,10 +23,8 @@
             {{material-icon action='moreOptions' icon='done'}}
         {{/if}}
     </core-toolbar>
-    {{#view 'slide-in'}}
-  
-        <core-toolbar class="core-toolbar-custom">
-        </core-toolbar>
+    {{#view 'slide-in' z='3'}}
+        <paper-item noink class="user-list"><paper-button noink>USERS</paper-button></paper-item>
         {{#each user in model}}
             
             {{#link-to 'user' user}}

@@ -1,4 +1,4 @@
-<div class="user-wrapper" fit>
+<div class="users-wrapper" fit>
     <core-toolbar class="core-toolbar-users">
         {{material-icon action='goBack' icon='arrow-back'}}
         <div flex> </div>
@@ -23,30 +23,25 @@
             {{material-icon action='moreOptions' icon='done'}}
         {{/if}}
     </core-toolbar>
-    <paper-shadow class="question">
-        <paper-item class="user-list" horizontal layout center>
-            <div horizontal layout flex center class="user-list-div">
-                <core-icon {{bind-attr src=model.image}}></core-icon>
-                <div flex class="user-list-name">
-                    {{model.username}}
-                </div>
-                {{#if model.submitted}}
-                    <core-icon icon="check" class="check-icon"></core-icon>
-                {{/if}}
-            </div>
-        </paper-item>
-    </paper-shadow>
-    {{#if mycontent}}
     {{#view 'slide-in'}}
-    
-        {{#each question in mycontent}}
-            <paper-input-decorator {{bind-attr label=question.question}} disabled floatingLabel="true">
-                <paper-autogrow-textarea>
-                    <textarea disabled {{bind-attr name=question.number}}>{{question.answer}}</textarea>
-                </paper-autogrow-textarea>
-            </paper-input-decorator>
+  
+        <core-toolbar class="core-toolbar-custom">
+        </core-toolbar>
+        {{#each user in model}}
+            
+            {{#link-to 'user' user}}
+                <paper-item class="user-list" horizontal layout center>
+                    <div horizontal layout center flex class="user-list-div">
+                        <core-icon {{bind-attr src=user.image}}></core-icon>
+                        <div flex class="user-list-name">
+                            {{user.username}}
+                        </div>
+                        {{#if user.submitted}}
+                            <core-icon icon="check" class="check-icon"></core-icon>
+                        {{/if}}
+                    </div>
+                </paper-item>
+            {{/link-to}}
         {{/each}}
-        {{/view}}
-    
-    {{/if}}
+    {{/view}}
 </div>

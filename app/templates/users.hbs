@@ -27,8 +27,8 @@
         <paper-item noink class="user-list"><paper-button noink>USERS</paper-button></paper-item>
         {{#each user in model}}
             
-            {{#link-to 'user' user}}
-                <paper-item class="user-list" horizontal layout center>
+            
+                <paper-item class="user-list" horizontal layout center {{action 'gotoUser' user}} >
                     <div horizontal layout center flex class="user-list-div">
                         <core-icon {{bind-attr src=user.image}}></core-icon>
                         <div flex class="user-list-name">
@@ -39,7 +39,7 @@
                         {{/if}}
                     </div>
                 </paper-item>
-            {{/link-to}}
+            
         {{/each}}
     {{/view}}
 </div>

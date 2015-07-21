@@ -1,23 +1,19 @@
 <div class="login-wrapper">
     <div class="form-div">
-        <div layout vertical flex class="form-wrapper">
+        <div class="login-name"><span>LOGIN</span>
+            <paper-fab icon="add" class="paper-fab-custom" {{action 'fabAction'}}></paper-fab>
+        </div>
+        <div layout vertical class="form-wrapper">
             <paper-input-decorator label="Username" floatingLabel="true" error="wrong credentials">
                 {{input type="text" value=username id="username"}}
             </paper-input-decorator>
             <paper-input-decorator label="Password" floatingLabel="true" error="wrong credentials">
                 {{input type="password" value=password id="password" action="login"}}
             </paper-input-decorator>
-            <paper-input-decorator label="Email" floatingLabel="true" pattern='(\w)@triconinfotech.com'>
+            <paper-input-decorator label="Email" floatingLabel="true" pattern='(\w)@triconinfotech.com' class="register">
                 {{input type="email" value=email id="email"}}
             </paper-input-decorator>
         </div>
-        <div flex></div>
-        <div horizontal center layout class="button-div">
-            {{#flat-button action='signup' class="if-forgot-button" collapse="true" }}
-                sign up
-            {{/flat-button}}
-        </div>
-        <paper-fab icon="arrow-forward" class="paper-fab-custom" {{action 'login'}}></paper-fab>
+
     </div>
-    
 </div>

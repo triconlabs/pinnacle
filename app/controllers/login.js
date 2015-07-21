@@ -8,13 +8,26 @@ export default Ember.Controller.extend({
     showFab: function() {
         console.log("fabbing");
         if (this.get('username') && this.get('password')) {
-            $('paper-fab').attr('showing', true);
+        	$('paper-fab').css('transform', 'rotate(0deg)');
+            $('paper-fab').css('background-color', 'green');
+            $('paper-fab').attr('icon', 'check');
 
         } else {
-            $('paper-fab').removeAttr('showing');
+            $('paper-fab').css('background-color', '#d23f31');
+            $('paper-fab').attr('icon', 'add');
         }
     }.observes('username', 'password'),
     actions: {
+        fabAction: function() {
+            if ($('.login-name span').text() == "LOGIN") {
+                $('.login-name span').text('REGISTER');
+                $('paper-fab').css('transform', 'rotate(135deg)');
+            } else {
+                $('.login-name span').text('LOGIN');
+                $('paper-fab').css('transform', 'rotate(0deg)');
+            }
+            $(".register").toggle('fast');
+        },
         signup: function() {
             var input = $('#email')[0];
             $('paper-input-decorator').attr('error', 'required information');
@@ -65,7 +78,7 @@ export default Ember.Controller.extend({
                     console.log(user.get('id'));
                     user.ParseACL = {
                         role: 'Moderators',
-                        owner : user.id
+                        owner: user.id
                     };
                     user.save().then(function() {
 

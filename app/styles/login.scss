@@ -1,22 +1,29 @@
 .login-wrapper {
     height: inherit;
     .form-div {
-        width: 60%;
+        width: 300px;
         background-color: #fff;
         height: auto;
-        margin: auto;
         margin-top: 64px;
         max-height: 580px;
-        max-width: 512px;
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
         border-radius: 2px;
-        min-width: 300px;
-        max-width: 500px;
         border-radius: 5px;
-        .form-wrapper {
+        margin: auto;
+        margin-top: 100px;
+        .login-name {
             width: 80%;
+            display: block;
+            position: relative;
+            padding: 20px;
+            padding-top: 40px;
+        }
+        .form-wrapper {
+            width: 100%;
             margin: auto;
-            margin-bottom: 10px;
+            height: auto;
+            margin-top : 30px;
+            padding-bottom : 50px;
         }
     }
     .button-div {
@@ -26,24 +33,20 @@
     paper-input-decorator {
         width: 80%;
         margin: auto;
+        font-size: 15px;
         margin-top: 0px;
         margin-bottom: 0px;
     }
-    paper-fab[showing] {
-        position: absolute;
-        right: 20px;
-        bottom: -20px;
-        -webkit-transform: none;
-        transform: none;
-    }
     paper-fab {
-        transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1) 500ms, background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
-        -webkit-transition: -webkit-transform 500ms cubic-bezier(0.4, 0, 0.2, 1) 500ms, background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
-        -webkit-transform: scale(0);
-        transform: scale(0);
-        -webkit-transform-origin: 50% 50%;
-        transform-origin: 50% 50%;
-        background-color: rgb(74, 181, 74);
-        color: white;
+        position: absolute;
+        right: -40px;
+        top: 20px;
+        transition: all ease-in 0.3s;
+    }
+    .register {
+        display: none !important;
+    }
+    paper-input-decorator::shadow .unfocused-underline {
+        background-color: rgba(117, 117, 117, 0.49)
     }
 }

@@ -59,9 +59,13 @@ core-header-panel {
 .drawer {
     color: white;
     background-color: #333333;
-    paper-item{
-        font-size : 15px;
-        color : rgba(255, 255, 255, 0.9);
+    paper-item {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.9);
+        padding-left: 5px;
+    }
+    a {
+        color: #ED2553;
     }
 }
 
@@ -85,4 +89,12 @@ core-header-panel {
 #upload {
     height: 0px;
     width: 0px;
+}
+
+a {
+    color: inherit;
+}
+
+a.active {
+    color: #f00;
 }

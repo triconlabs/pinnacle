@@ -7,6 +7,9 @@ export default Ember.Controller.extend({
         },
         goBack: function () {
             this.transitionToRoute('test');
+        },
+        gotoUser : function(user){
+        	this.transitionToRoute('user' , user);
         }
     }
 });

@@ -36,7 +36,7 @@ export default Ember.Controller.extend({
     }.property('controllers.application.model'),
     actions: {
         logout: function () {
-            var _this = this;
+            var self = this;
             var file = $('#upload')[0].files[0];
             var serverUrl = 'https://api.parse.com/1/files/' + file.name;
 
@@ -54,10 +54,10 @@ export default Ember.Controller.extend({
                 success: function (data) {
 
 
-                    _this.set('session.user.image', data.url);
-                    console.log(_this.get('session.sessionStore'));
-                    //console.log(_this.get('session.sessionStore'));
-                    _this.get('session.user').save().then(function (model) {
+                    self.set('session.user.image', data.url);
+                    console.log(self.get('session.sessionStore'));
+                    //console.log(self.get('session.sessionStore'));
+                    self.get('session.user').save().then(function (model) {
 
 
                     })
@@ -75,11 +75,11 @@ export default Ember.Controller.extend({
             $('core-drawer-panel')[0].togglePanel();
         },
         answer: function () {
-            var _this = this;
+            var self = this;
 
 
             if (this.get('submitted')) {
-                _this.send('submit');
+                self.send('submit');
             } else {
 
                 var user = this.get('session.user');
@@ -105,14 +105,13 @@ export default Ember.Controller.extend({
 
                     });
                 } else {
-                    var answer = _this.store.createRecord('answer', {
+                    var answer = self.store.createRecord('answer', {
                         response: _response
                     });
                     console.log(this.get('session.userId'));
                     if (this.get('session.userId')) {
                         answer.ParseACL = {
-                            owner: this.get('session.userId'),
-                            role : 'Moderators'
+                            owner: this.get('session.userId')
                         };
                         answer.set('user', this.get('session.user'));
                     }
@@ -120,16 +119,16 @@ export default Ember.Controller.extend({
                 }
                 console.log(answer.get('response'));
                 answer.save().then(function () {
-                    _this.set('session.user.answer', answer);
-                    _this.set('session.user.submitted', true);
-                    _this.set('session.user.answerId', answer.id);
-                    _this.get('session.user').save().then(function () {
+                    self.set('session.user.answer', answer);
+                    self.set('session.user.submitted', true);
+                    self.set('session.user.answerId', answer.id);
+                    self.get('session.user').save().then(function () {
                         console.log("shit is happening");
                     })
                     console.log($('.answers').height());
-                    _this.set('submitted',
+                    self.set('submitted',
                         'true');
-                    _this.set("fab-icon", "expand-less");
+                    self.set("fab-icon", "expand-less");
                     $('.test-wrapper').css('overflow', 'hidden');
                     $('.question').css({
                         'top': $('body').height() - 420 + 'px'

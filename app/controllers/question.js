@@ -11,10 +11,10 @@ export default Ember.Controller.extend({
         post: function(argument) {
             console.log("posting new question");
             console.log($("paper-input").val());
-            var self = this;
+            var _this = this;
             if ($(".post-question").css('display') == 'block' && $("paper-input").val()) {
 
-                var question = self.store.createRecord('question', {
+                var question = _this.store.createRecord('question', {
                     question: ($("paper-input").val()).toString(),
                     number: 9,
                     show: true
@@ -24,6 +24,7 @@ export default Ember.Controller.extend({
                     $(".post-question").toggle('fast');
                 })
             } else {
+            	$('paper-fab').css( 'transform', 'rotate(135deg)');
                 $(".post-question").toggle('fast');
             }
         },
@@ -31,8 +32,11 @@ export default Ember.Controller.extend({
             question.toggleProperty('show');
         },
         runCloudCode: function(number) {
+        	if(!number){
+        		number = 1;
+        	}
             var freqlist = [];
-            var self = this;
+            var _this = this;
             var height = 600;
             var width = 600;
             this.get('cloud').run('hello', {
@@ -60,8 +64,8 @@ export default Ember.Controller.extend({
                     })
 
 
-                    //  self.set('words', freqlist);
-                    // self.send('calculateCloud');
+                    //  _this.set('words', freqlist);
+                    // _this.send('calculateCloud');
                     var fill = d3.scale.category20();
 
                     d3.layout.cloud().size([width, height])

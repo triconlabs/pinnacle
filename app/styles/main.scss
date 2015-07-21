@@ -18,21 +18,17 @@ body>.ember-view {
     -webkit-transition: height 1s;
 }
 
-
-
 .paper-shadow-top {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 paper-input-decorator::shadow .focused-underline {
     /* line color when the input is focused */
-    
     background-color: #3F51B5;
 }
 
 paper-input-decorator .focused-underline {
     /* line color when the input is focused */
-    
     background-color: #3F51B5;
 }
 
@@ -46,9 +42,7 @@ paper-input-decorator {
 core-header-panel {
     height: 100%;
     z-index: 13;
-    >div {
-        background-color: #E0E0E0;
-    }
+    >div {}
 }
 
 .core-toolbar-custom {
@@ -63,7 +57,12 @@ core-header-panel {
 }
 
 .drawer {
-    background-color: #fff;
+    color: white;
+    background-color: #333333;
+    paper-item{
+        font-size : 15px;
+        color : rgba(255, 255, 255, 0.9);
+    }
 }
 
 .main {
@@ -71,9 +70,9 @@ core-header-panel {
 }
 
 .tall {
-    background-color: #3F51B5;
+    background-color: #333333;
     .bottom {
-        color: white;
+        color: #44A7FF;
     }
 }
 
@@ -83,7 +82,7 @@ core-header-panel {
     width: 40px;
 }
 
-#upload{
-    height : 0px;
-    width : 0px;
+#upload {
+    height: 0px;
+    width: 0px;
 }

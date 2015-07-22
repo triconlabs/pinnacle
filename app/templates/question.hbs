@@ -23,30 +23,23 @@
             {{material-icon action='moreOptions' icon='done'}}
         {{/if}}
     </core-toolbar>
-    
-
     {{#view 'slide-in'}}
         <paper-fab {{bind-attr icon=fab-icon}} class="paper-fab-custom" {{action 'post'}}></paper-fab>
-    
-        <paper-item noink><paper-button>questions</paper-button></paper-item>
-          <paper-item noink class="post-question" >
-            
-      
+        <paper-item noink>
+            <paper-button>questions</paper-button>
+        </paper-item>
+        <paper-item noink class="post-question">
             <span class="post-span">
              <paper-input name="question" label="Ask a question"></paper-input>
              </span>
-            </paper-item>
+        </paper-item>
         {{#each question in model}}
-        <paper-item noink {{action  'runCloudCode' question.number}} >
-        {{radio-button toggles="true" checked=question.show question=question}}
-      
-        <span {{bind-attr class="question.show:question-show:question-hide"}}>
+            <paper-item noink {{action  'runCloudCode' question.number}}>
+                {{radio-button toggles="true" checked=question.show question=question}}
+                <span {{bind-attr class="question.show:question-show:question-hide"}}>
          {{question.question}}
          </span>
             </paper-item>
         {{/each}}
-        
-       
-    
-        {{/view}}
+    {{/view}}
 </div>

@@ -24,7 +24,15 @@
         {{/if}}
     </core-toolbar>
     {{#view 'slide-in' z='3'}}
-        <paper-item noink class="user-list"><paper-button noink>USERS</paper-button></paper-item>
+               <core-toolbar class="core-toolbar-custom">
+            <paper-button noink>
+                USERS
+            </paper-button>
+            <div flex></div>
+            {{#if model.submitted}}
+                <core-icon icon="check" ></core-icon>
+            {{/if}}
+        </core-toolbar>
         {{#each user in model}}
             
             

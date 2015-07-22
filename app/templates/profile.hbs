@@ -1,4 +1,4 @@
-<div class="users-wrapper" fit>
+<div class="profile-wrapper" fit>
     <core-toolbar class="core-toolbar-users">
         {{material-icon action='goBack' icon='arrow-back'}}
         <div flex> </div>
@@ -24,24 +24,33 @@
         {{/if}}
     </core-toolbar>
     {{#view 'slide-in'}}
-  
         <core-toolbar class="core-toolbar-custom">
+            <paper-button noink>
+                PROFILE
+            </paper-button>
+            <div flex></div>
+            {{#if model.submitted}}
+                <core-icon icon="check" class="check-icon"></core-icon>
+            {{/if}}
         </core-toolbar>
-        {{#each user in model}}
-            
-            {{#link-to 'user' user}}
-                <paper-item class="user-list" horizontal layout center>
-                    <div horizontal layout center flex class="user-list-div">
-                        <core-icon {{bind-attr src=user.image}}></core-icon>
-                        <div flex class="user-list-name">
-                            {{user.username}}
-                        </div>
-                        {{#if user.submitted}}
-                            <core-icon icon="check" class="check-icon"></core-icon>
-                        {{/if}}
-                    </div>
-                </paper-item>
-            {{/link-to}}
-        {{/each}}
+        <paper-item class="user-list" horizontal layout center>
+            <div horizontal layout center flex class="user-list-div">
+                <core-icon {{bind-attr src=model.image}}></core-icon>
+                <div flex class="user-list-name">
+                    {{model.username}}
+                </div>
+            </div>
+        </paper-item>
+        <paper-item class="user-list" horizontal layout center noink>
+            <paper-input-decorator disabled>
+                {{input type="email" value=model.email }}
+            </paper-input-decorator>
+        </paper-item>
+        <paper-item class="user-list" horizontal layout center noink>
+            {{#view 'radio-group' selected=model.gender user=model}}
+                <paper-radio-button name="Male" label="Male"></paper-radio-button>
+                <paper-radio-button name="Female" label="Female"></paper-radio-button>
+            {{/view}}
+        </paper-item>
     {{/view}}
 </div>

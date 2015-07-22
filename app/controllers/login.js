@@ -121,11 +121,7 @@ export default Ember.Controller.extend({
                         _this.send('getAnswers');
                     })
                 }
-                _this.set('loginBool' , true);
-                _this.set('formFilledBool' , false);
-                _this.set('username' , "");
-                _this.set('email' , "");
-                _this.set('password' , "");
+
             }).catch(function(error) {
                 console.log("not logged in");
                 console.log(error);

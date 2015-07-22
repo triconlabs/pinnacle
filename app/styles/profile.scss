@@ -1,12 +1,7 @@
-.users-wrapper {
+.profile-wrapper {
     .core-toolbar-users {
         background-color: transparent;
         color: #fff;
-        font-size: medium;
-    }
-    .core-toolbar-custom {
-        font-size: medium;
-   
     }
     overflow: auto;
     height: inherit;
@@ -16,6 +11,19 @@
         position: absolute;
         top: -20px;
         right: 50px;
+    }
+    .core-toolbar-custom {
+        paper-button {
+            font-size: medium;
+        }
+        core-icon {
+            height: 36px;
+            width: 36px;
+            border-radius: 50%;
+            font-size: small;
+            overflow: hidden;
+            background-color: transparent;
+        }
     }
     .question {
         width: 50%;
@@ -57,13 +65,6 @@
             text-overflow: ellipsis;
             padding-right: 16px;
             display: inline-block;
-        }
-        core-icon {
-            height: 36px;
-            width: 36px;
-            border-radius: 50%;
-            overflow: hidden;
-            background-color: white;
         }
         .check-icon {
             height: 24px;

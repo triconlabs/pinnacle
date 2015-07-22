@@ -42,7 +42,7 @@
         {{#each question in mycontent}}
             <paper-input-decorator {{bind-attr label=question.question}} disabled floatingLabel="true">
                 <paper-autogrow-textarea>
-                    <textarea disabled {{bind-attr name=question.number}}>{{question.answer}}</textarea>
+                    <textarea disabled {{bind-attr name=question.number}}>{{question.userAnswer}}</textarea>
                 </paper-autogrow-textarea>
             </paper-input-decorator>
         {{/each}}

@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
 
             console.log('answers');
             questions.forEach(function (item, index, enumerable) {
-                Ember.set(item, "answer", answers[Ember.get(item, "number")]);
+                Ember.set(item, "userAnswer", answers[Ember.get(item, "number")]);
 
             });
             console.log("mycontent");

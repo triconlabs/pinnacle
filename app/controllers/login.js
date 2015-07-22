@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
 
         }
 
-    }.observes('username', 'password', 'email'),
+    }.observes('username', 'password', 'email' , 'loginBool'),
     actions: {
 
         fab: function() {

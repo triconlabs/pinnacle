@@ -10,8 +10,10 @@
         border-radius: 2px;
         border-radius: 5px;
         margin: auto;
-        transition : none;
+        transition: none;
         margin-top: 100px;
+        position: absolute;
+        right: 48%;
         .login-name {
             width: 80%;
             display: block;
@@ -23,8 +25,8 @@
             width: 100%;
             margin: auto;
             height: auto;
-            margin-top : 30px;
-            padding-bottom : 50px;
+            margin-top: 30px;
+            padding-bottom: 50px;
         }
     }
     .button-div {
@@ -45,7 +47,7 @@
         transition: all ease-in 0.3s;
     }
     .register {
-        display: none ;
+        display: none;
     }
     paper-input-decorator::shadow .unfocused-underline {
         background-color: rgba(117, 117, 117, 0.49)

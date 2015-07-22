@@ -1,6 +1,6 @@
 .login-wrapper {
     height: inherit;
-    .form-div {
+    .question {
         width: 300px;
         background-color: #fff;
         height: auto;
@@ -10,6 +10,7 @@
         border-radius: 2px;
         border-radius: 5px;
         margin: auto;
+        transition : none;
         margin-top: 100px;
         .login-name {
             width: 80%;
@@ -44,7 +45,7 @@
         transition: all ease-in 0.3s;
     }
     .register {
-        display: none !important;
+        display: none ;
     }
     paper-input-decorator::shadow .unfocused-underline {
         background-color: rgba(117, 117, 117, 0.49)

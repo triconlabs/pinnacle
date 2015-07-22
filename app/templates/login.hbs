@@ -1,7 +1,7 @@
 <div class="login-wrapper">
-    <div class="form-div">
+    {{#view 'slide-in'}}
         <div class="login-name"><span>LOGIN</span>
-            <paper-fab icon="add" class="paper-fab-custom" {{action 'fabAction'}}></paper-fab>
+            <paper-fab icon="add" class="paper-fab-custom" {{action 'fab'}}></paper-fab>
         </div>
         <div layout vertical class="form-wrapper">
             <paper-input-decorator label="Username" floatingLabel="true" error="wrong credentials">
@@ -10,10 +10,9 @@
             <paper-input-decorator label="Password" floatingLabel="true" error="wrong credentials">
                 {{input type="password" value=password id="password" action="login"}}
             </paper-input-decorator>
-            <paper-input-decorator label="Email" floatingLabel="true" pattern='(\w)@triconinfotech.com' class="register">
+            {{#view 'paper-shadow' label="Email" floatingLabel="true" pattern='(\w)@triconinfotech.com' style="display:none"}}
                 {{input type="email" value=email id="email"}}
-            </paper-input-decorator>
+            {{/view}}
         </div>
-
-    </div>
+    {{/view}}
 </div>

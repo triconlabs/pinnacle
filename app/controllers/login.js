@@ -5,28 +5,63 @@ export default Ember.Controller.extend({
     email: "",
     password: "",
     username: "",
+    loginBool: true,
+    formFilledBool: false,
     showFab: function() {
         console.log("fabbing");
-        if (this.get('username') && this.get('password')) {
-        	$('paper-fab').css('transform', 'rotate(0deg)');
-            $('paper-fab').css('background-color', 'green');
-            $('paper-fab').attr('icon', 'check');
-
-        } else {
-            $('paper-fab').css('background-color', '#d23f31');
-            $('paper-fab').attr('icon', 'add');
-        }
-    }.observes('username', 'password'),
-    actions: {
-        fabAction: function() {
-            if ($('.login-name span').text() == "LOGIN") {
-                $('.login-name span').text('REGISTER');
-                $('paper-fab').css('transform', 'rotate(135deg)');
-            } else {
-                $('.login-name span').text('LOGIN');
+        if (this.get('loginBool')) {
+            
+            if (this.get('username') && this.get('password')) {
                 $('paper-fab').css('transform', 'rotate(0deg)');
+                $('paper-fab').css('background-color', '#00C853');
+                $('paper-fab').attr('icon', 'check');
+                this.set('formFilledBool' , true);
+            } else {
+                $('paper-fab').css('background-color', '#d23f31');
+                $('paper-fab').attr('icon', 'add');
+                this.set('formFilledBool' , false);
             }
-            $(".register").toggle('fast');
+        } else {
+            this.toggleProperty('formFilledBool');
+            if (this.get('username') && this.get('password') && this.get('email')) {
+                $('paper-fab').css('transform', 'rotate(0deg)');
+                $('paper-fab').css('background-color', '#00C853');
+                $('paper-fab').attr('icon', 'check');
+                this.set('formFilledBool' , true);
+            } else {
+                $('paper-fab').css('background-color', '#d23f31');
+                $('paper-fab').attr('icon', 'add');
+                $('paper-fab').css('transform', 'rotate(135deg)');
+                this.set('formFilledBool' , false);
+            }
+
+        }
+
+    }.observes('username', 'password', 'email'),
+    actions: {
+
+        fab: function() {
+            var _this = this;
+            if (this.get('formFilledBool')) {
+                if (this.get('loginBool')) {
+                    _this.send('login');
+                } else {
+                    _this.send('signup');
+                }
+
+            } else {
+                if (this.get('loginBool')) {
+                    $('.login-name span').text('REGISTER');
+                    $('paper-fab').css('transform', 'rotate(135deg)');
+
+                } else {
+                    $('.login-name span').text('LOGIN');
+                    $('paper-fab').css('transform', 'rotate(0deg)');
+                }
+                this.toggleProperty('loginBool');
+            	$(".register").toggle('fast');
+            }
+            
         },
         signup: function() {
             var input = $('#email')[0];
@@ -68,7 +103,7 @@ export default Ember.Controller.extend({
             $('core-collapse').toggle()
         },
         login: function(setPermissions) {
-            var self = this;
+            var _this = this;
             this.get('session').authenticate(this.get('username'), this.get('password')).then(function(user) {
                 console.log(user);
                 if (setPermissions) {
@@ -83,9 +118,14 @@ export default Ember.Controller.extend({
                     user.save().then(function() {
 
 
-                        self.send('getAnswers');
+                        _this.send('getAnswers');
                     })
                 }
+                _this.set('loginBool' , true);
+                _this.set('formFilledBool' , false);
+                _this.set('username' , "");
+                _this.set('email' , "");
+                _this.set('password' , "");
             }).catch(function(error) {
                 console.log("not logged in");
                 console.log(error);
@@ -124,6 +164,7 @@ export default Ember.Controller.extend({
             this.set("password", "");
             this.set("email", "");
             this.transitionToRoute('test');
+            return 0;
         }
     }
 });

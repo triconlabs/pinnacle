@@ -11,6 +11,7 @@ export default Ember.View.extend({
             console.log(e);
             console.log(e.detail.item.label);
             console.log('paper-radio-group');
+            console.log(_this.get('session'))
             _this.set('user.gender', e.detail.item.label);
             _this.get('user').save().then(function() {
 

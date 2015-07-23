@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
                 $('paper-fab').attr('icon', 'check');
                 this.set('formFilledBool' , true);
             } else {
-                $('paper-fab').css('background-color', '#d23f31');
+                $('paper-fab').css('background-color', '#ED2553');
                 $('paper-fab').attr('icon', 'add');
                 this.set('formFilledBool' , false);
             }
@@ -29,7 +29,7 @@ export default Ember.Controller.extend({
                 $('paper-fab').attr('icon', 'check');
                 this.set('formFilledBool' , true);
             } else {
-                $('paper-fab').css('background-color', '#d23f31');
+                $('paper-fab').css('background-color', '#ED2553');
                 $('paper-fab').attr('icon', 'add');
                 $('paper-fab').css('transform', 'rotate(135deg)');
                 this.set('formFilledBool' , false);

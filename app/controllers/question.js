@@ -23,18 +23,22 @@ export default Ember.Controller.extend({
                     alert("successfully added question");
                     $(".post-question").toggle('fast');
                 })
-            } else {
-            	$('paper-fab').css( 'transform', 'rotate(135deg)');
+            } else if ($(".post-question").css('display') == 'block') {
+                $('paper-fab').css('transform', 'rotate(0deg)');
                 $(".post-question").toggle('fast');
+            } else {
+                $('paper-fab').css('transform', 'rotate(135deg)');
+                $(".post-question").toggle('fast');
+
             }
         },
         toggle: function(question) {
             question.toggleProperty('show');
         },
         runCloudCode: function(number) {
-        	if(!number){
-        		number = 1;
-        	}
+            if (!number) {
+                number = 1;
+            }
             var freqlist = [];
             var _this = this;
             var height = 600;

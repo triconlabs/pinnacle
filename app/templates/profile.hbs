@@ -33,7 +33,7 @@
                 <core-icon icon="check" class="check-icon"></core-icon>
             {{/if}}
         </core-toolbar>
-        <paper-item class="user-list" horizontal layout center>
+        <paper-item class="user-list" horizontal layout center {{action 'setProfilePicture'}}>
             <div horizontal layout center flex class="user-list-div">
                 <core-icon {{bind-attr src=model.image}}></core-icon>
                 <div flex class="user-list-name">
@@ -54,5 +54,5 @@
         </paper-item>
     {{/view}}
 
-    
+
 </div>

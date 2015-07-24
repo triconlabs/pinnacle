@@ -29,7 +29,7 @@ export default Ember.Controller.extend({
                     var preqlist = Object.keys(ratings).map(function(d) {
                         return {
                             text: d,
-                            size: ratings[d]*15
+                            size: ratings[d] * 15
                         };
                     })
 
@@ -40,8 +40,10 @@ export default Ember.Controller.extend({
 
                     d3.layout.cloud().size([width, height])
                         .words(preqlist)
-                        .rotate(function(d) { return 0; })
-                     //   .font("Impact")
+                        .rotate(function(d) {
+                            return 0;
+                        })
+                        //   .font("Impact")
                         .fontSize(function(d) {
                             return d.size;
                         })
@@ -57,20 +59,20 @@ export default Ember.Controller.extend({
                             .attr("width", width)
                             .attr("height", height)
                             .append("g")
-                            .attr("transform", "translate("+width/2+","+height/2+")")
+                            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
                             .selectAll("text")
                             .data(words)
                             .enter().append("text")
                             .style("font-size", function(d) {
                                 return d.size + "px";
                             })
-                         //   .style("font-family", "Impact")
+                            //   .style("font-family", "Impact")
                             .style("fill", function(d, i) {
                                 return fill(i);
                             })
                             .attr("text-anchor", "middle")
                             .attr("transform", function(d) {
-                                return "translate(" + [d.x+10, d.y+10] + ")rotate(" + d.rotate + ")";
+                                return "translate(" + [d.x + 10, d.y + 10] + ")rotate(" + d.rotate + ")";
                             })
                             .text(function(d) {
                                 return d.text;
@@ -84,8 +86,85 @@ export default Ember.Controller.extend({
 
         },
 
-    },
-    drawCloud: function() {
+        drawCloud: function() {
 
+        },
+        animatedGenderplot: function() {
+
+            var DURATION = 500,
+                DEALY = 200,
+                elementId = 'pieChart';
+            var data =  [{
+                    color: 'red',
+                    description: 'Ipsem lorem text goes here. And foo goes bar goes baz. That\'s up!!!',
+                    title: 'flowers',
+                    value: 0.7
+                }, {
+                    color: 'blue',
+                    description: 'Another ipsem text goes here. And baz goes bar goes foo. Oh yeah, whazzz up?',
+                    title: 'trains',
+                    value: 0.3
+                }];
+            
+            // TODO code duplication check how you can avoid that
+            var containerEl = document.getElementById(elementId),
+                width = containerEl.clientWidth,
+                height = width * 0.4,
+                radius = Math.min(width, height) / 2,
+                container = d3.select(containerEl),
+                svg = container.select('svg')
+                .attr('width', width)
+                .attr('height', height);
+            var pie = svg.append('g')
+                .attr(
+                    'transform',
+                    'translate(' + width / 2 + ',' + height / 2 + ')'
+                );
+
+            var detailedInfo = svg.append('g')
+                .attr('class', 'pieChart--detailedInformation');
+
+            var twoPi = 2 * Math.PI;
+            var pieData = d3.layout.pie()
+                .value(function(d) {
+                    return d.value;
+                });
+
+            var arc = d3.svg.arc()
+                .outerRadius(radius - 20)
+                .innerRadius(radius - 70);
+
+            var pieChartPieces = pie.datum(data)
+                .selectAll('path')
+                .data(pieData)
+                .enter()
+                .append('path')
+                .attr('class', function(d) {
+                    return 'pieChart__' + d.data.color;
+                })
+                .attr('filter', 'url(#pieChartInsetShadow)')
+                .attr('d', arc)
+                .each(function() {
+                    this._current = {
+                        startAngle: 0,
+                        endAngle: 0
+                    };
+                })
+                .transition()
+                .duration(DURATION)
+                .attrTween('d', function(d) {
+                    var interpolate = d3.interpolate(this._current, d);
+                    this._current = interpolate(0);
+
+                    return function(t) {
+                        return arc(interpolate(t));
+                    };
+                })
+                .each('end', function handleAnimationEnd(d) {
+
+                });
+
+
+        }
     }
 });

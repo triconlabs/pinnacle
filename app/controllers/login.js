@@ -44,9 +44,9 @@ export default Ember.Controller.extend({
             var _this = this;
             if (this.get('formFilledBool')) {
                 if (this.get('loginBool')) {
-                    _this.send('login');
+                    this.send('login' , true);
                 } else {
-                    _this.send('signup');
+                    this.send('signup');
                 }
 
             } else {
@@ -105,7 +105,7 @@ export default Ember.Controller.extend({
         login: function(setPermissions) {
             var _this = this;
             this.get('session').authenticate(this.get('username'), this.get('password')).then(function(user) {
-                console.log(user);
+                console.log(setPermissions);
                 if (setPermissions) {
                     console.log('setting user permission')
 
@@ -121,7 +121,8 @@ export default Ember.Controller.extend({
                         _this.send('getAnswers');
                     })
                 }
-
+                
+               
             }).catch(function(error) {
                 console.log("not logged in");
                 console.log(error);

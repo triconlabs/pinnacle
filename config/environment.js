@@ -30,11 +30,7 @@ module.exports = function (environment) {
     };
     ENV['ember-parse'] = {
         PARSE_APPLICATION_ID: 'IrcvQfurruulfg3GMOFV9f2pESsBwcJ18wTlc850',
-        PARSE_JAVASCRIPT_KEY: 'jFvFlAt54mDMjIZgWdXnISe3ELSsNpw34O6Wk9Sa',
-        session: {
-            authenticationRoute: 'login', // Route where your login form is located
-            ifAlreadyAuthenticatedRoute: 'test' // Route to redirect logged in users
-        }
+        PARSE_JAVASCRIPT_KEY: 'jFvFlAt54mDMjIZgWdXnISe3ELSsNpw34O6Wk9Sa'
     };
 
     if (environment === 'development') {

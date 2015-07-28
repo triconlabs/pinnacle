@@ -4,6 +4,20 @@ export default Ember.Controller.extend({
     cloud: Ember.inject.service('cloud'),
     needs: ['test'],
     'fab-icon': 'add',
+    'question': "",
+    greenLit: function() {
+        console.log("fabbing");
+        if (this.get('question')) {
+            $('paper-fab').css('transform', 'rotate(0deg)');
+            $('paper-fab').css('background-color', '#00C853');
+            $('paper-fab').attr('icon', 'check');
+        } else {
+            $('paper-fab').css('background-color', '#ED2553');
+            $('paper-fab').attr('icon', 'add');
+
+        }
+
+    }.observes('question'),
     actions: {
         toggleDrawer: function() {
             $('core-drawer-panel')[0].togglePanel();
@@ -20,7 +34,8 @@ export default Ember.Controller.extend({
                     show: true
                 });
                 question.save().then(function() {
-                    alert("successfully added question");
+                    $('#toast').attr('text', 'question added');
+                    Ember.$('#toast')[0].show();
                     $(".post-question").toggle('fast');
                 })
             } else if ($(".post-question").css('display') == 'block') {

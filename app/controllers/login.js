@@ -10,16 +10,16 @@ export default Ember.Controller.extend({
     showFab: function() {
         console.log("fabbing");
         if (this.get('loginBool')) {
-            
+
             if (this.get('username') && this.get('password')) {
                 $('paper-fab').css('transform', 'rotate(0deg)');
                 $('paper-fab').css('background-color', '#00C853');
                 $('paper-fab').attr('icon', 'check');
-                this.set('formFilledBool' , true);
+                this.set('formFilledBool', true);
             } else {
                 $('paper-fab').css('background-color', '#ED2553');
                 $('paper-fab').attr('icon', 'add');
-                this.set('formFilledBool' , false);
+                this.set('formFilledBool', false);
             }
         } else {
             this.toggleProperty('formFilledBool');
@@ -27,24 +27,24 @@ export default Ember.Controller.extend({
                 $('paper-fab').css('transform', 'rotate(0deg)');
                 $('paper-fab').css('background-color', '#00C853');
                 $('paper-fab').attr('icon', 'check');
-                this.set('formFilledBool' , true);
+                this.set('formFilledBool', true);
             } else {
                 $('paper-fab').css('background-color', '#ED2553');
                 $('paper-fab').attr('icon', 'add');
                 $('paper-fab').css('transform', 'rotate(135deg)');
-                this.set('formFilledBool' , false);
+                this.set('formFilledBool', false);
             }
 
         }
 
-    }.observes('username', 'password', 'email' , 'loginBool'),
+    }.observes('username', 'password', 'email', 'loginBool'),
     actions: {
 
         fab: function() {
             var _this = this;
             if (this.get('formFilledBool')) {
                 if (this.get('loginBool')) {
-                    this.send('login' , true);
+                    this.send('login', true);
                 } else {
                     this.send('signup');
                 }
@@ -59,9 +59,9 @@ export default Ember.Controller.extend({
                     $('paper-fab').css('transform', 'rotate(0deg)');
                 }
                 this.toggleProperty('loginBool');
-            	$(".register").toggle('fast');
+                $(".register").toggle('fast');
             }
-            
+
         },
         signup: function() {
             var input = $('#email')[0];
@@ -105,12 +105,9 @@ export default Ember.Controller.extend({
         login: function(setPermissions) {
             var _this = this;
             this.get('session').authenticate(this.get('username'), this.get('password')).then(function(user) {
-                console.log(setPermissions);
+                console.log("LOGGIN IN");
                 if (setPermissions) {
-                    console.log('setting user permission')
-
-                    console.log(user);
-                    console.log(user.get('id'));
+                    console.log('setting user permission');
                     user.ParseACL = {
                         role: 'Moderators',
                         owner: user.id
@@ -121,8 +118,8 @@ export default Ember.Controller.extend({
                         _this.send('getAnswers');
                     })
                 }
-                
-               
+
+
             }).catch(function(error) {
                 console.log("not logged in");
                 console.log(error);
@@ -134,26 +131,19 @@ export default Ember.Controller.extend({
         },
         getAnswers: function() {
 
-            var self = this;
-            console.log("getAnswers");
-            this.store.all('user').filter(function(model) {
-                    if (model.get('id') == self.get('session.userId')) {
-                        console.log(model)
-                        self.set('controllers.application.user', model);
-                        self.send('reloadData', true);
-                    }
-                })
-                //  this.set('controllers.application.user' , this.get('session.user'));
-                //           self.set('controllers.application.content', self.get('session.user'));
-                /*           if (this.get('session.user.answerId')) {
+            var _this = this;
 
-                               self.store.find('answer').then(function (answer) {
-                                   self.send('clearVariables');
-                                   
-                               })
-                           } else {
-                               self.send('clearVariables');
-                           }*/
+            this.store.all('user').filter(function(model) {
+                if (model.get('id') == _this.get('session.userId')) {
+
+                    _this.set('controllers.application.user', model);
+                    _this.set("username", "");
+                    _this.set("password", "");
+                    _this.set("email", "");
+                    _this.send('reloadData', true);
+                }
+            })
+
         },
         clearVariables: function() {
 

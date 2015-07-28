@@ -30,7 +30,10 @@
         </paper-item>
         <paper-item noink class="post-question">
             <span class="post-span">
-             <paper-input name="question" label="Ask a question"></paper-input>
+                        <paper-input-decorator label="Ask a question" error="wrong credentials">
+                {{input type="test" value=question id="password" name="question" action="post"}}
+            </paper-input-decorator>
+             
              </span>
         </paper-item>
         {{#each question in model}}

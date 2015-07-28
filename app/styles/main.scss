@@ -7,9 +7,9 @@ body {
     font-family: ''Robotoregular'';
     background-color: #3F51B5;
 }
-$c-red  : #d79d91;
-$c-blue : #6bb7c7;
 
+$c-red: #d79d91;
+$c-blue: #6bb7c7;
 body>.ember-view {
     height: inherit;
 }
@@ -21,11 +21,11 @@ body>.ember-view {
 }
 
 .pieChart__blue {
-  fill: $c-blue;
+    fill: $c-blue;
 }
 
 .pieChart__red {
-  fill: $c-red;
+    fill: $c-red;
 }
 
 .paper-shadow-top {
@@ -103,9 +103,14 @@ core-header-panel {
 
 a {
     color: inherit;
-    text-decoration : none;
+    text-decoration: none;
 }
 
 a.active {
     color: #f00;
+}
+
+paper-toast {
+    background: #92E296;
+    color : black;
 }

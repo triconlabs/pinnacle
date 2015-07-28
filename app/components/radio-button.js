@@ -16,7 +16,7 @@ export default Ember.Component.extend({
                 self.toggleProperty('question.show');
                 self.get('question').save().then(function() {
 
-                    $('#toast').attr('text', 'updated');
+                    $('#toast').attr('text', 'updated question');
                     Ember.$('#toast')[0].show()
                 });
 

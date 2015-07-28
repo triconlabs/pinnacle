@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
     }.property('model.gender'),
     actions: {
         setProfilePicture: function(e) {
-        	e.preventDefault();
+            e.preventDefault();
             var _this = this;
             var file = $('#upload')[0].files[0];
             var serverUrl = 'https://api.parse.com/1/files/' + file.name;
@@ -29,20 +29,15 @@ export default Ember.Controller.extend({
                 contentType: false,
                 success: function(data) {
 
-
-                    _this.set('session.user.image', data.url);
-
+                     _this.set('session.user.image', data.url);
                     console.log(_this.get('session.sessionStore'));
                     //console.log(_this.get('session.sessionStore'));
                     _this.get('session.user').save().then(function(model) {
                         var key = _this.get('session.sessionStoreKey'),
                             user = _this.get('controllers.application.user');
-
-
-
-                        console.log(user.get('gender'));
-
-
+                        console.log("user saved with new profile pic");
+                        $('#toast').attr('text', 'profile picture saved');
+                        Ember.$('#toast')[0].show();
                         var args = JSON.parse(localStorage[key]);
                         args._response.image = user.get('image');
                         localStorage.setItem(key, JSON.stringify(args));

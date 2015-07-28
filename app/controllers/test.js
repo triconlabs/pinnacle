@@ -55,43 +55,35 @@ export default Ember.Controller.extend({
             } else {
 
                 var user = this.get('session.user');
-                //     var _response = []
-                //    this.get('model').map(function(item, index, enumerable) {
-                //       console.log(item.get('question') + "!");
-                //      console.log($("textarea[name='" + item.get('number') + "']").val());
-                //     var ans = ($("textarea[name='" + item.get('number') + "']").val()).toString();
-                //    _response.splice(item.get('number'), 0, ans);
-                //   return ans;
-                //});
+
+                // answers response as array . Used previously .
+                /*     var _response = []
+                    this.get('model').map(function(item, index, enumerable) {
+                       console.log(item.get('question') + "!");
+                      console.log($("textarea[name='" + item.get('number') + "']").val());
+                     var ans = ($("textarea[name='" + item.get('number') + "']").val()).toString();
+                    _response.splice(item.get('number'), 0, ans);
+                   return ans;
+                });*/
 
 
+                var a = {};
+                this.get('model').map(function(item, index, enumerable) {
+
+                    var ans = ($("textarea[name='" + item.get('id') + "']").val()).toString();
+                    a[item.get('id')] = ans;
+                    //_response.splice(item.get('number'), 0, ans);
+                    return ans;
+                });
 
                 if (user.get('answerId')) {
-                    var a = {};
-                    this.get('model').map(function(item, index, enumerable) {
-                        console.log(item.get('id') + "!");
-                        console.log($("textarea[name='" + item.get('id') + "']").val());
-                        var ans = ($("textarea[name='" + item.get('id') + "']").val()).toString();
-                        a[item.get('id')] = ans;
-                        //_response.splice(item.get('number'), 0, ans);
-                        return ans;
-                    });
-                    console.log("answerId is present")
+                    console.log("answerId is present");
                     var answer = this.get('controllers.application.model')
                     answer.set('asdf', a);
                     console.log(answer);
                 } else {
-                    var a = {};
-                    this.get('model').map(function(item, index, enumerable) {
-                        console.log(item.get('id') + "!");
-                        console.log($("textarea[name='" + item.get('id') + "']").val());
-                        var ans = ($("textarea[name='" + item.get('id') + "']").val()).toString();
-                        a[item.get('id')] = ans;
-                        //_response.splice(item.get('number'), 0, ans);
-                        return ans;
-                    });
 
-                    console.log(a);
+                    console.log("answerId absent");
                     var answer = _this.store.createRecord('answer', {
                         asdf: a
                     });
@@ -103,17 +95,20 @@ export default Ember.Controller.extend({
                         };
                         answer.set('user', this.get('session.user'));
                     }
-
+                    console.log(answer);
                 }
-                console.log(answer.get('asdf'));
+
+                console.log("saving answer");
                 answer.save().then(function() {
+                    $('#toast').attr('text', 'answer saved');
+                    Ember.$('#toast')[0].show();
                     _this.set('session.user.answer', answer);
                     _this.set('session.user.submitted', true);
                     _this.set('session.user.answerId', answer.id);
                     _this.get('session.user').save().then(function() {
-                        console.log("shit is happening");
+                       console.log("user updated");
+                    Ember.$('#toast')[0].show();
                     })
-                    console.log($('.answers').height());
                     _this.set('submitted',
                         'true');
                     _this.set("fab-icon", "expand-less");

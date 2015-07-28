@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
     mycontent: function() {
         console.log(this.get('model'));
 
-        var answers = this.get('model.answer.response'),
+        var answers = this.get('model.answer.asdf'),
             _this = this;
         if (this.get('controllers.test.model')) {
 
@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
 
                 console.log('answers');
                 questions.forEach(function(item, index, enumerable) {
-                    Ember.set(item, "userAnswer", answers[Ember.get(item, "number")]);
+                    Ember.set(item, "userAnswer", answers[Ember.get(item, "id")]);
 
                 });
                 console.log("mycontent");

@@ -16,20 +16,26 @@ export default Ember.Controller.extend({
         return dateC.from(dateB);
     }.property('controllers.application.model.updatedAt'),
     mycontent: function() {
-        console.log(this.get('model'));
+        console.log("mycontent test route");
 
-        var answers = this.get('controllers.application.model.response');
-        console.log(answers);
+        var answers = this.get('controllers.application.model.asdf');
+        console.log(this.get('controllers.application.model.asdf'));
         var questions = this.get('model');
 
         if (answers) {
 
             console.log('answers');
             questions.forEach(function(item, index, enumerable) {
-                Ember.set(item, "answer", answers[Ember.get(item, "number")]);
+                console.log(Ember.get(item, "id"));
+                if (answers[Ember.get(item, "id")]) {
+
+                    Ember.set(item, "answer", answers[Ember.get(item, "id")]);
+                } else {
+                    Ember.set(item, "answer", "");
+                }
 
             });
-            console.log("mycontent");
+
             return questions;
         }
         return this.get('model');
@@ -49,32 +55,47 @@ export default Ember.Controller.extend({
             } else {
 
                 var user = this.get('session.user');
-                var _response = []
-                this.get('model').map(function(item, index, enumerable) {
-                    console.log(item.get('question') + "!");
-                    console.log($("textarea[name='" + item.get('number') + "']").val());
-                    var ans = ($("textarea[name='" + item.get('number') + "']").val()).toString();
-                    _response.splice(item.get('number'), 0, ans);
-                    return ans;
-                });
+                //     var _response = []
+                //    this.get('model').map(function(item, index, enumerable) {
+                //       console.log(item.get('question') + "!");
+                //      console.log($("textarea[name='" + item.get('number') + "']").val());
+                //     var ans = ($("textarea[name='" + item.get('number') + "']").val()).toString();
+                //    _response.splice(item.get('number'), 0, ans);
+                //   return ans;
+                //});
 
 
 
                 if (user.get('answerId')) {
+                    var a = {};
+                    this.get('model').map(function(item, index, enumerable) {
+                        console.log(item.get('id') + "!");
+                        console.log($("textarea[name='" + item.get('id') + "']").val());
+                        var ans = ($("textarea[name='" + item.get('id') + "']").val()).toString();
+                        a[item.get('id')] = ans;
+                        //_response.splice(item.get('number'), 0, ans);
+                        return ans;
+                    });
                     console.log("answerId is present")
                     var answer = this.get('controllers.application.model')
+                    answer.set('asdf', a);
                     console.log(answer);
-                    answer.set('response', [])
-                    _response.forEach(function(item, index, enumerable) {
-
-                        answer.get('response').push(item);
-
-                    });
                 } else {
-                    var answer = _this.store.createRecord('answer', {
-                        response: _response
+                    var a = {};
+                    this.get('model').map(function(item, index, enumerable) {
+                        console.log(item.get('id') + "!");
+                        console.log($("textarea[name='" + item.get('id') + "']").val());
+                        var ans = ($("textarea[name='" + item.get('id') + "']").val()).toString();
+                        a[item.get('id')] = ans;
+                        //_response.splice(item.get('number'), 0, ans);
+                        return ans;
                     });
-                    console.log(this.get('session.userId'));
+
+                    console.log(a);
+                    var answer = _this.store.createRecord('answer', {
+                        asdf: a
+                    });
+
                     if (this.get('session.userId')) {
                         answer.ParseACL = {
                             owner: this.get('session.userId'),
@@ -84,7 +105,7 @@ export default Ember.Controller.extend({
                     }
 
                 }
-                console.log(answer.get('response'));
+                console.log(answer.get('asdf'));
                 answer.save().then(function() {
                     _this.set('session.user.answer', answer);
                     _this.set('session.user.submitted', true);

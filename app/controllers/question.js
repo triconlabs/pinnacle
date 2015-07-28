@@ -11,6 +11,10 @@ export default Ember.Controller.extend({
             $('paper-fab').css('transform', 'rotate(0deg)');
             $('paper-fab').css('background-color', '#00C853');
             $('paper-fab').attr('icon', 'check');
+        } else if ($(".post-question").css('display') == 'block') {
+            $('paper-fab').css('background-color', '#ED2553');
+            $('paper-fab').css('transform', 'rotate(135deg)');
+            $('paper-fab').attr('icon', 'add');
         } else {
             $('paper-fab').css('background-color', '#ED2553');
             $('paper-fab').attr('icon', 'add');
@@ -23,25 +27,32 @@ export default Ember.Controller.extend({
             $('core-drawer-panel')[0].togglePanel();
         },
         post: function(argument) {
-            console.log("posting new question");
-            console.log($("paper-input").val());
+            console.log($("#question-input").val());
+            console.log(this.get('model.length'));
             var _this = this;
-            if ($(".post-question").css('display') == 'block' && $("paper-input").val()) {
+            if ($(".post-question").css('display') == 'block' && $("#question-input").val()) {
+                console.log("posting new question");
 
                 var question = _this.store.createRecord('question', {
-                    question: ($("paper-input").val()).toString(),
-                    number: 9,
+                    question: ($("#question-input").val()).toString(),
+                    number: _this.get('model.length'),
                     show: true
                 });
+                question.ParseACL = {
+                    role: 'Moderators'
+                };
                 question.save().then(function() {
                     $('#toast').attr('text', 'question added');
                     Ember.$('#toast')[0].show();
                     $(".post-question").toggle('fast');
+                    _this.set('question', "");
                 })
             } else if ($(".post-question").css('display') == 'block') {
+                console.log("no question");
                 $('paper-fab').css('transform', 'rotate(0deg)');
                 $(".post-question").toggle('fast');
             } else {
+                console.log("no question");
                 $('paper-fab').css('transform', 'rotate(135deg)');
                 $(".post-question").toggle('fast');
 

@@ -2,7 +2,11 @@
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-var app = new EmberApp();
+var app = new EmberApp({
+  fingerprint: {
+    enabled: false
+  }
+});
 app.import('bower_components/parse-sdk/lib/parse.min.js');
 // Use `app.import` to add additional libraries to the generated
 // output files.

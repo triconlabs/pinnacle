@@ -6,7 +6,9 @@ var attr = DS.attr;
 export default ParseUser.extend({
     submitted: DS.attr(),
     role: DS.attr('string'),
-    answer: DS.belongsTo('answer', {async: true})
+    answer: DS.belongsTo('answer', {async: true}),
+    gender : DS.attr('string'),
+    objectId : DS.attr('string')
 
     /**
      * This model already has this attributes.

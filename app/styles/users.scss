@@ -1,7 +1,12 @@
 .users-wrapper {
     .core-toolbar-users {
         background-color: transparent;
-        color: #3F51B5;
+        color: #fff;
+        font-size: medium;
+    }
+    .core-toolbar-custom {
+        font-size: medium;
+   
     }
     overflow: auto;
     height: inherit;
@@ -17,13 +22,14 @@
         min-width: 300px;
         max-width: 400px;
         height: auto;
+        padding-bottom: 20px;
+        transition: none;
         margin: auto;
         margin-top: 100px;
         background-color: #fff;
     }
     paper-input-decorator::shadow .unfocused-underline {
         /* line color when the input is focused */
-        
         background-color: transparent;
     }
     .answers {

@@ -1,24 +1,24 @@
 <input type="file" id="upload">
-<core-drawer-panel forceNarrow>
+<core-drawer-panel>
     {{#if inLogin}}
         <core-header-panel drawer class="drawer">
             <core-toolbar class="tall">
-                <div flex class="middle" {{action 'upload'}}><img src= {{user.image}} id="userimg"></div>
+                <div flex class="middle"><img src= {{user.image}} id="userimg"></div>
                 <div flex class="bottom">{{user.username}}</div>
                 <div class="drawer-name bottom"></div>
             </core-toolbar>
             <div>
-                <paper-item>
+                <paper-item {{action 'profile'}}>
                     PROFILE
                 </paper-item>
                 {{#if admin}}
                     <paper-item {{action 'users'}}>
                         USERS
                     </paper-item>
-                    <paper-item>
-                        {{#link-to 'question'}}
+                    <paper-item {{action 'question'}}>
+                        
                             QUESTIONS
-                        {{/link-to}}
+                        
                     </paper-item>
                 {{/if}}
                 <paper-item>
@@ -27,6 +27,9 @@
                     {{/link-to}}
                 </paper-item>
                 <paper-item {{action 'test'}}>
+                    FORM
+                </paper-item>
+                <paper-item {{action 'feedback'}}>
                     FEEDBACK
                 </paper-item>
                 <paper-item {{action 'logout'}}>

@@ -23,14 +23,20 @@
             {{material-icon action='moreOptions' icon='done'}}
         {{/if}}
     </core-toolbar>
-    {{#view 'slide-in'}}
-  
-        <core-toolbar class="core-toolbar-custom">
+    {{#view 'slide-in' z='3'}}
+               <core-toolbar class="core-toolbar-custom">
+            <paper-button noink>
+                USERS
+            </paper-button>
+            <div flex></div>
+            {{#if model.submitted}}
+                <core-icon icon="check" ></core-icon>
+            {{/if}}
         </core-toolbar>
         {{#each user in model}}
             
-            {{#link-to 'user' user}}
-                <paper-item class="user-list" horizontal layout center>
+            
+                <paper-item class="user-list" vertical layout {{action 'gotoUser' user}} >
                     <div horizontal layout center flex class="user-list-div">
                         <core-icon {{bind-attr src=user.image}}></core-icon>
                         <div flex class="user-list-name">
@@ -41,7 +47,7 @@
                         {{/if}}
                     </div>
                 </paper-item>
-            {{/link-to}}
+            
         {{/each}}
     {{/view}}
 </div>

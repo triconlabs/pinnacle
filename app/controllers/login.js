@@ -5,17 +5,65 @@ export default Ember.Controller.extend({
     email: "",
     password: "",
     username: "",
-    showFab: function () {
+    loginBool: true,
+    formFilledBool: false,
+    showFab: function() {
         console.log("fabbing");
-        if (this.get('username') && this.get('password')) {
-            $('paper-fab').attr('showing', true);
+        if (this.get('loginBool')) {
 
+            if (this.get('username') && this.get('password')) {
+                $('paper-fab').css('transform', 'rotate(0deg)');
+                $('paper-fab').css('background-color', '#00C853');
+                $('paper-fab').attr('icon', 'check');
+                this.set('formFilledBool', true);
+            } else {
+                $('paper-fab').css('background-color', '#ED2553');
+                $('paper-fab').attr('icon', 'add');
+                this.set('formFilledBool', false);
+            }
         } else {
-            $('paper-fab').removeAttr('showing');
+            this.toggleProperty('formFilledBool');
+            if (this.get('username') && this.get('password') && this.get('email')) {
+                $('paper-fab').css('transform', 'rotate(0deg)');
+                $('paper-fab').css('background-color', '#00C853');
+                $('paper-fab').attr('icon', 'check');
+                this.set('formFilledBool', true);
+            } else {
+                $('paper-fab').css('background-color', '#ED2553');
+                $('paper-fab').attr('icon', 'add');
+                $('paper-fab').css('transform', 'rotate(135deg)');
+                this.set('formFilledBool', false);
+            }
+
         }
-    }.observes('username', 'password'),
+
+    }.observes('username', 'password', 'email', 'loginBool'),
     actions: {
-        signup: function () {
+
+        fab: function() {
+            var _this = this;
+            if (this.get('formFilledBool')) {
+                if (this.get('loginBool')) {
+                    this.send('login', true);
+                } else {
+                    this.send('signup');
+                }
+
+            } else {
+                if (this.get('loginBool')) {
+                    $('.login-name span').text('REGISTER');
+                    $('paper-fab').css('transform', 'rotate(135deg)');
+
+                } else {
+                    $('.login-name span').text('LOGIN');
+                    $('paper-fab').css('transform', 'rotate(0deg)');
+                }
+                this.toggleProperty('loginBool');
+                $(".register").toggle('fast');
+            }
+
+        },
+        signup: function() {
             var input = $('#email')[0];
             $('paper-input-decorator').attr('error', 'required information');
 
@@ -37,10 +85,11 @@ export default Ember.Controller.extend({
                     username: this.get('username'),
                     password: this.get('password'),
                     email: this.get('email')
-                }).then(function (user) {
+                }).then(function(user) {
                     console.log(user);
-                    self.send('login');
-                }).catch(function (reason) {
+
+                    self.send('login', true);
+                }).catch(function(reason) {
                     var err = `Code ${reason.errors[0].code}: ${reason.errors[0].details}`;
                     console.error(err);
                     this.set('authError', err);
@@ -50,15 +99,28 @@ export default Ember.Controller.extend({
 
 
         },
-        showMe: function () {
+        showMe: function() {
             $('core-collapse').toggle()
         },
-        login: function () {
-            var self = this;
-            this.get('session').authenticate(this.get('username'), this.get('password')).then(function (user) {
-                console.log(user);
-                self.send('getAnswers');
-            }).catch(function (error) {
+        login: function(setPermissions) {
+            var _this = this;
+            this.get('session').authenticate(this.get('username'), this.get('password')).then(function(user) {
+                console.log("LOGGIN IN");
+                if (setPermissions) {
+                    console.log('setting user permission');
+                    user.ParseACL = {
+                        role: 'Moderators',
+                        owner: user.id
+                    };
+                    user.save().then(function() {
+
+
+                        _this.send('getAnswers');
+                    })
+                }
+
+
+            }).catch(function(error) {
                 console.log("not logged in");
                 console.log(error);
                 if (error.responseJSON.code == 101) {
@@ -67,35 +129,29 @@ export default Ember.Controller.extend({
                 }
             })
         },
-        getAnswers: function () {
+        getAnswers: function() {
 
-            var self = this;
-            console.log("getAnswers");
-            this.store.all('user').filter(function (model) {
-                if(model.get('id') == self.get('session.userId')){
-                    console.log(model)
-                    self.set('controllers.application.user' , model);
-                    self.send('reloadData',true);
+            var _this = this;
+
+            this.store.all('user').filter(function(model) {
+                if (model.get('id') == _this.get('session.userId')) {
+
+                    _this.set('controllers.application.user', model);
+                    _this.set("username", "");
+                    _this.set("password", "");
+                    _this.set("email", "");
+                    _this.send('reloadData', true);
                 }
             })
-            //  this.set('controllers.application.user' , this.get('session.user'));
-            //           self.set('controllers.application.content', self.get('session.user'));
-            /*           if (this.get('session.user.answerId')) {
 
-                           self.store.find('answer').then(function (answer) {
-                               self.send('clearVariables');
-                               
-                           })
-                       } else {
-                           self.send('clearVariables');
-                       }*/
         },
-        clearVariables: function () {
+        clearVariables: function() {
 
             this.set("username", "");
             this.set("password", "");
             this.set("email", "");
             this.transitionToRoute('test');
+            return 0;
         }
     }
 });

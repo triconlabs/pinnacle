@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
     'z': 4,
     needs: ['answer', 'application'],
     content: null,
-    formattedTime: function () {
+    formattedTime: function() {
         var dateB = moment();
         var time = this.get('controllers.application.model.updatedAt')
         var dateC = moment(time);
@@ -15,120 +15,103 @@ export default Ember.Controller.extend({
         console.log(dateC.from(dateB));
         return dateC.from(dateB);
     }.property('controllers.application.model.updatedAt'),
-    mycontent: function () {
-        console.log(this.get('model'));
+    mycontent: function() {
+        console.log("mycontent test route");
 
-        var answers = this.get('controllers.application.model.response');
-        console.log(answers);
+        var answers = this.get('controllers.application.model.asdf');
+        console.log(this.get('controllers.application.model.asdf'));
         var questions = this.get('model');
 
         if (answers) {
 
             console.log('answers');
-            questions.forEach(function (item, index, enumerable) {
-                Ember.set(item, "answer", answers[Ember.get(item, "number")]);
+            questions.forEach(function(item, index, enumerable) {
+                console.log(Ember.get(item, "id"));
+                if (answers[Ember.get(item, "id")]) {
+
+                    Ember.set(item, "answer", answers[Ember.get(item, "id")]);
+                } else {
+                    Ember.set(item, "answer", "");
+                }
 
             });
-            console.log("mycontent");
+
             return questions;
         }
         return this.get('model');
     }.property('controllers.application.model'),
     actions: {
-        logout: function () {
-            var self = this;
-            var file = $('#upload')[0].files[0];
-            var serverUrl = 'https://api.parse.com/1/files/' + file.name;
-
-            $.ajax({
-                type: "POST",
-                beforeSend: function (request) {
-                    request.setRequestHeader("X-Parse-Application-Id", 'IrcvQfurruulfg3GMOFV9f2pESsBwcJ18wTlc850');
-                    request.setRequestHeader("X-Parse-REST-API-Key", '7erEDPfMmoxik96OICRjSzBBxkWoYYt1drZ1ZYo8');
-                    request.setRequestHeader("Content-Type", file.type);
-                },
-                url: serverUrl,
-                data: file,
-                processData: false,
-                contentType: false,
-                success: function (data) {
 
 
-                    self.set('session.user.image', data.url);
-                    console.log(self.get('session.sessionStore'));
-                    //console.log(self.get('session.sessionStore'));
-                    self.get('session.user').save().then(function (model) {
-
-
-                    })
-                },
-                error: function (data) {
-                    var obj = jQuery.parseJSON(data);
-                    alert(obj.error);
-                }
-            });
-
-
-        },
-
-        toggleDrawer: function () {
+        toggleDrawer: function() {
             $('core-drawer-panel')[0].togglePanel();
         },
-        answer: function () {
-            var self = this;
+        answer: function() {
+            var _this = this;
 
 
             if (this.get('submitted')) {
-                self.send('submit');
+                _this.send('submit');
             } else {
 
                 var user = this.get('session.user');
-                var _response = []
-                this.get('model').map(function (item, index, enumerable) {
-                    console.log(item.get('question') + "!");
-                    console.log($("textarea[name='" + item.get('number') + "']").val());
-                    var ans = ($("textarea[name='" + item.get('number') + "']").val()).toString();
+
+                // answers response as array . Used previously .
+                /*     var _response = []
+                    this.get('model').map(function(item, index, enumerable) {
+                       console.log(item.get('question') + "!");
+                      console.log($("textarea[name='" + item.get('number') + "']").val());
+                     var ans = ($("textarea[name='" + item.get('number') + "']").val()).toString();
                     _response.splice(item.get('number'), 0, ans);
+                   return ans;
+                });*/
+
+
+                var a = {};
+                this.get('model').map(function(item, index, enumerable) {
+
+                    var ans = ($("textarea[name='" + item.get('id') + "']").val()).toString();
+                    a[item.get('id')] = ans;
+                    //_response.splice(item.get('number'), 0, ans);
                     return ans;
                 });
 
-
-
                 if (user.get('answerId')) {
-                    console.log("answerId is present")
+                    console.log("answerId is present");
                     var answer = this.get('controllers.application.model')
+                    answer.set('asdf', a);
                     console.log(answer);
-                    answer.set('response', [])
-                    _response.forEach(function (item, index, enumerable) {
-
-                        answer.get('response').push(item);
-
-                    });
                 } else {
-                    var answer = self.store.createRecord('answer', {
-                        response: _response
+
+                    console.log("answerId absent");
+                    var answer = _this.store.createRecord('answer', {
+                        asdf: a
                     });
-                    console.log(this.get('session.userId'));
+
                     if (this.get('session.userId')) {
                         answer.ParseACL = {
-                            owner: this.get('session.userId')
+                            owner: this.get('session.userId'),
+                            role: 'Moderators'
                         };
                         answer.set('user', this.get('session.user'));
                     }
-
+                    console.log(answer);
                 }
-                console.log(answer.get('response'));
-                answer.save().then(function () {
-                    self.set('session.user.answer', answer);
-                    self.set('session.user.submitted', true);
-                    self.set('session.user.answerId', answer.id);
-                    self.get('session.user').save().then(function () {
-                        console.log("shit is happening");
+
+                console.log("saving answer");
+                answer.save().then(function() {
+                    $('#toast').attr('text', 'answer saved');
+                    Ember.$('#toast')[0].show();
+                    _this.set('session.user.answer', answer);
+                    _this.set('session.user.submitted', true);
+                    _this.set('session.user.answerId', answer.id);
+                    _this.get('session.user').save().then(function() {
+                       console.log("user updated");
+                    Ember.$('#toast')[0].show();
                     })
-                    console.log($('.answers').height());
-                    self.set('submitted',
+                    _this.set('submitted',
                         'true');
-                    self.set("fab-icon", "expand-less");
+                    _this.set("fab-icon", "expand-less");
                     $('.test-wrapper').css('overflow', 'hidden');
                     $('.question').css({
                         'top': $('body').height() - 420 + 'px'
@@ -142,7 +125,7 @@ export default Ember.Controller.extend({
 
             }
         },
-        submit: function () {
+        submit: function() {
             console.log("expand");
             this.set("submitted", false);
             this.set("fab-icon", "chevron-right");

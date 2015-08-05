@@ -39,11 +39,13 @@ export default Ember.Controller.extend({
                     show: true
                 });
                 question.ParseACL = {
+                    owner: this.get('session.userId'),
                     role: 'Moderators'
                 };
                 question.save().then(function() {
                     $('#toast').attr('text', 'question added');
                     Ember.$('#toast')[0].show();
+                    $('paper-fab').css('transform', 'rotate(0deg)');
                     $(".post-question").toggle('fast');
                     _this.set('question', "");
                 })

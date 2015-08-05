@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     needs: ['application'],
+    'newExpertise' : "",
     gender: function(argument) {
         if (this.get('model.gender') == 'Male') {
             return true;
@@ -9,6 +10,16 @@ export default Ember.Controller.extend({
             return false;
         }
     }.property('model.gender'),
+    expertise: function() {
+        var _this = this;
+        var array = $.map(_this.get('model.expertise'), function(value, index) {
+            return {
+                skill: index,
+                show: value
+            };
+        });
+        return array;
+    }.property('model.expertise'),
     actions: {
         setProfilePicture: function(e) {
             e.preventDefault();
@@ -29,7 +40,7 @@ export default Ember.Controller.extend({
                 contentType: false,
                 success: function(data) {
 
-                     _this.set('session.user.image', data.url);
+                    _this.set('session.user.image', data.url);
                     console.log(_this.get('session.sessionStore'));
                     //console.log(_this.get('session.sessionStore'));
                     _this.get('session.user').save().then(function(model) {
@@ -52,5 +63,35 @@ export default Ember.Controller.extend({
 
 
         },
+        addSkill: function() {
+            //Check here if skill or similar skill is already present
+
+            console.log($("#expertise-input").val());
+            
+            var _this = this;
+            if (true) {
+                console.log("adding new expertise");
+
+                var expertise = _this.store.createRecord('expertise', {
+                    skill: ($("#expertise-input").val()).toString()
+
+                });
+                expertise.ParseACL = {
+                    owner: this.get('session.userId')
+
+                };
+                expertise.save().then(function() {
+                    $('#toast').attr('text', 'question added');
+                    Ember.$('#toast')[0].show();
+
+
+                    _this.set('newExpertise', "");
+                })
+            } else {
+                console.log("no question");
+
+
+            }
+        }
     }
 });

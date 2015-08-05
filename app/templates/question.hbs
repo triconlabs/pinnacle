@@ -37,7 +37,7 @@
              </span>
         </paper-item>
         {{#each question in model}}
-            <paper-item noink {{action  'runCloudCode' question.number}}>
+            <paper-item noink>
                 {{radio-button toggles="true" checked=question.show question=question}}
                 <span {{bind-attr class="question.show:question-show:question-hide"}}>
          {{question.question}}

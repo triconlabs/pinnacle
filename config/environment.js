@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-module.exports = function (environment) {
+module.exports = function(environment) {
     var ENV = {
         modulePrefix: 'ember-parse-bb',
         environment: environment,
@@ -54,7 +54,12 @@ module.exports = function (environment) {
     }
 
     if (environment === 'production') {
-
+        minifyCSS: {
+            enabled: true
+        }
+        minifyJS: {
+            enabled: true
+        }
     }
 
     return ENV;

@@ -69,11 +69,12 @@ export default Ember.Controller.extend({
 
                 var a = {};
                 this.get('model').map(function(item, index, enumerable) {
+                    if (item.get('show')) {
 
-                    var ans = ($("textarea[name='" + item.get('id') + "']").val()).toString();
-                    a[item.get('id')] = ans;
-                    //_response.splice(item.get('number'), 0, ans);
-                    return ans;
+                        var ans = ($("textarea[name='" + item.get('id') + "']").val()).toString();
+                        a[item.get('id')] = ans;
+                        return ans;
+                    }
                 });
 
                 if (user.get('answerId')) {
@@ -106,8 +107,8 @@ export default Ember.Controller.extend({
                     _this.set('session.user.submitted', true);
                     _this.set('session.user.answerId', answer.id);
                     _this.get('session.user').save().then(function() {
-                       console.log("user updated");
-                    Ember.$('#toast')[0].show();
+                        console.log("user updated");
+                        Ember.$('#toast')[0].show();
                     })
                     _this.set('submitted',
                         'true');

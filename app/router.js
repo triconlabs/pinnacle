@@ -18,4 +18,5 @@ export default Router.map(function () {
   this.route('wordcloud');
   this.route('profile');
   this.route('feedback');
+  this.route('todos');
 });

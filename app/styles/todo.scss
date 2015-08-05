@@ -1,7 +1,9 @@
 .todo-wrapper {
-    max-width: 600px;
+    max-width: 400px;
     margin: auto;
-    
+    .item-list{
+        margin-top : 10px;
+    }
     button {
         margin: 0;
         padding: 0;
@@ -119,7 +121,7 @@
     }
     #todo-list li {
         position: relative;
-        font-size: 24px;
+        font-size: 16px;
         border-bottom: 1px solid #ededed;
     }
     #todo-list li:last-child {
@@ -162,8 +164,8 @@
         white-space: pre;
         word-break: break-word;
         padding: 15px 60px 15px 15px;
-        margin-left: 45px;
-        display: block;
+        margin-left: 0px;
+        display: inline-block;
         line-height: 1.2;
         transition: color 0.4s;
     }

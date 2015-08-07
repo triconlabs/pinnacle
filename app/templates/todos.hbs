@@ -11,13 +11,13 @@
                         {{#with todo}}
                             {{#view 'slide-in' checked=todo.isCompleted}}
                                 <paper-item noink class="item-list">
-                                    <li {{bind-attr class="todo.isCompleted:completed isEditing:editing" }}>
+                                    <li {{bind-attr class="todo.isCompleted:completed isEditing:editing" }} horizontal layout center>
                                         {{#if isEditing}}
                                             {{todo-input type="text" class="edit" value=bufferedTitle focus-out="doneEditing" insert-newline="doneEditing" escape-press="cancelEditing"}}
                                         {{else}}
                                             {{paper-checkbox checked=todo.isCompleted}}
                                             <!-- {{input type="checkbox" class="toggle" checked=todo.isCompleted}} -->
-                                            <label {{action "editTodo"}}>{{todo.title}}</label>
+                                            <label {{action "editTodo"}} flex>{{todo.title}}</label>
                                             <button {{action "removeTodo"}} class="destroy"></button>
                                         {{/if}}
                                     </li>
@@ -27,12 +27,12 @@
                     {{/each}}
                 </ul>
             </section>
-        {{/if}}
-        {{#if model}}
+        
             <footer id="footer">
                 <span id="todo-count"><strong>{{remaining.length}}</strong>  left</span>
                 <ul id="filters">
                 </ul>
+                
                 {{#if completed.length}}
                     <button id="clear-completed" {{action "clearCompleted"}}>Clear completed</button>
                 {{/if}}

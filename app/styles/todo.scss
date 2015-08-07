@@ -29,9 +29,9 @@
         border-radius: 2px;
         left: -300px;
         background-color: rgba(44, 218, 11, 0.45);
-        ::shadow #checkbox.checked{
-            background-color : transparent;
-            border-color : transparent;
+        ::shadow #checkbox.checked {
+            background-color: transparent;
+            border-color: transparent;
         }
     }
     header {
@@ -158,6 +158,8 @@
         position: relative;
         font-size: 16px;
         border-bottom: 1px solid #ededed;
+        height: 100%;
+        width: 100%;
     }
     #todo-list li:last-child {
         border-bottom: none;
@@ -210,16 +212,11 @@
     }
     #todo-list li .destroy {
         display: none;
-        position: absolute;
-        top: 0;
-        right: 10px;
-        bottom: 0;
         width: 40px;
         height: 40px;
         margin: auto 0;
         font-size: 30px;
         color: #cc9a9a;
-        margin-bottom: 11px;
         transition: color 0.2s ease-out;
     }
     #todo-list li .destroy:hover {

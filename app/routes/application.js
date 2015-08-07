@@ -39,7 +39,7 @@ export default Ember.Route.extend({
                     Ember.Logger.log(transition);
 
 
-                    return self.transitionTo('test');
+                    return self.transitionTo('todos');
 
                 }
         }

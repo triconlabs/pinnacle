@@ -6,8 +6,8 @@ export default Ember.Route.extend({
     	console.log(this.get('session.isAuthenticated'));
         
         if (this.get('session.isAuthenticated')) {
-            // do stuff with the user
-            this.transitionTo('test')
+            // do stuff with the  user
+            this.transitionTo('todos');
         }
     }
 });

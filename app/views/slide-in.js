@@ -8,7 +8,7 @@ export default Ember.View.extend({
         var element = this.$()[0];
         element.setZ(3);
         // Hide Everything
-        this.$().hide();
+    //    this.$().hide();
         $(".question").slideDown(300);
         this._super();
     },

@@ -19,4 +19,10 @@ export default Router.map(function () {
   this.route('profile');
   this.route('feedback');
   this.route('todos');
+  this.route('project', {
+      path: '/project/:project_id'
+  });
+  this.route('expertise', {
+      path: '/expertise/:expertise_id'
+  });
 });

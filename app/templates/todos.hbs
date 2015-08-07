@@ -9,6 +9,7 @@
                 <ul id="todo-list">
                     {{#each todo in model itemController="todo" }}
                         {{#with todo}}
+                        {{#view 'slide-in'}}
                             <paper-item noink class="item-list">
                                 <li {{bind-attr class="todo.isCompleted:completed isEditing:editing" }}>
                                     {{#if isEditing}}
@@ -22,6 +23,7 @@
                                     {{/if}}
                                 </li>
                             </paper-item>
+                            {{/view}}
                         {{/with}}
                     {{/each}}
                 </ul>

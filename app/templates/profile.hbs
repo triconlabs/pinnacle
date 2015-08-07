@@ -53,17 +53,14 @@
             {{/view}}
         </paper-item>
         {{#each skill in expertise}}
-        <paper-item class="user-list" horizontal layout center noink>
-            {{radio-button toggles="true" name=skill.skill label=skill.skill checked=skill.show question=question skill=skill.skill user=model}}
-            
-        </paper-item>
+            <paper-item class="user-list" horizontal layout center noink>
+                {{radio-button toggles="true" name=skill.skill label=skill.skill checked=skill.show question=question skill=skill.skill user=model}}
+            </paper-item>
         {{/each}}
-        <paper-item  class="user-list" horizontal layout center noink>
-                    <paper-input-decorator>
+        <paper-item class="user-list" horizontal layout center noink>
+            <paper-input-decorator>
                 {{input type="text" id="expertise-input" value=newExpertise action="addSkill"}}
             </paper-input-decorator>
         </paper-item>
     {{/view}}
-
-
 </div>

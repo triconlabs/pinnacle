@@ -52,11 +52,13 @@
                 <paper-radio-button name="Female" label="Female"></paper-radio-button>
             {{/view}}
         </paper-item>
+        <paper-item horizontal layout class="expertise-list">
         {{#each skill in model.skills}}
-            <paper-item {{action 'gotoExpertise' skill.objectId}} >
-                afasdf
-            </paper-item>
+            <paper-button raised {{action 'gotoExpertise' skill}}>
+                {{skill}}
+            </paper-button>
         {{/each}}
+        </paper-item>
         <paper-item class="user-list" horizontal layout center noink>
             <paper-input-decorator>
                 {{input type="text" id="expertise-input" value=newExpertise action="addSkill"}}

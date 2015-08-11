@@ -12,9 +12,14 @@
         top: -20px;
         right: 50px;
     }
+    paper-button {
+        background-color: rgba(0, 22, 206, 0.64);
+        color: white;
+    }
     .core-toolbar-custom {
         paper-button {
             font-size: medium;
+            background-color: transparent;
         }
         core-icon {
             height: 24px;
@@ -24,6 +29,12 @@
             overflow: hidden;
             background-color: transparent;
         }
+    }
+    paper-button::shadow .button-content{
+        padding: 5px 5px;
+    }
+    .expertise-list{
+        margin-top : 30px;    
     }
     .question {
         width: 50%;

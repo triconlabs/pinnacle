@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
 
             this.store.find('expertise', {
                 "where": {
-                    "objectId": param
+                    "skill": param
                 }
             }).then(function(model) {
                 console.log(model.get('content')[0])
@@ -98,8 +98,20 @@ export default Ember.Controller.extend({
                     $('#toast').attr('text', 'question added');
                     Ember.$('#toast')[0].show();
                     _this.set('model.expertise')
-
-                    _this.set('newExpertise', "");
+                    var skill = ($("#expertise-input").val()).toString()
+                    console.log((expertise.skill).toString());
+                    _this.get('session.user').get('skills').pushObject(skill);
+                    _this.get('session.user').save().then(function() {
+                        var key = _this.get('session.sessionStoreKey'),
+                            user = _this.get('controllers.application.user');
+                        console.log("user saved with new profile pic");
+                        $('#toast').attr('text', 'profile picture saved');
+                        Ember.$('#toast')[0].show();
+                        var args = JSON.parse(localStorage[key]);
+                        args._response.skills = user.get('skills');
+                        localStorage.setItem(key, JSON.stringify(args));
+                        _this.set('newExpertise', "");
+                    })
                 })
             } else {
                 console.log("no question");

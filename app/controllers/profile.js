@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     needs: ['application'],
-    'newExpertise' : "",
+    'newExpertise': "",
     gender: function(argument) {
         if (this.get('model.gender') == 'Male') {
             return true;
@@ -21,6 +21,20 @@ export default Ember.Controller.extend({
         return array;
     }.property('model.expertise'),
     actions: {
+        gotoExpertise: function(param) {
+            var _this = this;
+            console.log("Going to expertise" + param);
+
+            this.store.find('expertise', {
+                "where": {
+                    "objectId": param
+                }
+            }).then(function(model) {
+                console.log(model.get('content')[0])
+
+                _this.transitionToRoute('expertise', model.get('content')[0]);
+            })
+        },
         setProfilePicture: function(e) {
             e.preventDefault();
             var _this = this;
@@ -67,7 +81,7 @@ export default Ember.Controller.extend({
             //Check here if skill or similar skill is already present
 
             console.log($("#expertise-input").val());
-            
+
             var _this = this;
             if (true) {
                 console.log("adding new expertise");
@@ -83,7 +97,7 @@ export default Ember.Controller.extend({
                 expertise.save().then(function() {
                     $('#toast').attr('text', 'question added');
                     Ember.$('#toast')[0].show();
-
+                    _this.set('model.expertise')
 
                     _this.set('newExpertise', "");
                 })

@@ -1,7 +1,7 @@
 <div class="todo-wrapper">
     <section id="todoapp">
         <header id="header">
-            {{todo-input id="new-todo" type="text" value=newTitle action="createTodo" placeholder="What needs to be done?"}}
+            {{todo-input id="new-todo" type="text" value=todoInputText action="createTodo" placeholder="What needs to be done?"}}
         </header>
         {{#if model}}
             <section id="main">
@@ -17,7 +17,10 @@
                                         {{else}}
                                             {{paper-checkbox checked=todo.isCompleted}}
                                             <!-- {{input type="checkbox" class="toggle" checked=todo.isCompleted}} -->
-                                            <label {{action "editTodo"}} flex>{{todo.title}}</label>
+                                            <label {{action "editTodo"}} flex>{{todo.title}} </label>
+                                            {{#each tag in todo.tags}}
+                                                <label {{action "gotoExpertise" tag}} flex> #{{tag}}</label>
+                                            {{/each}}
                                             <button {{action "removeTodo"}} class="destroy"></button>
                                         {{/if}}
                                     </li>
@@ -27,12 +30,10 @@
                     {{/each}}
                 </ul>
             </section>
-        
             <footer id="footer">
                 <span id="todo-count"><strong>{{remaining.length}}</strong>  left</span>
                 <ul id="filters">
                 </ul>
-                
                 {{#if completed.length}}
                     <button id="clear-completed" {{action "clearCompleted"}}>Clear completed</button>
                 {{/if}}

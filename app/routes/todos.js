@@ -1,7 +1,9 @@
 import Ember from 'ember';
+import authRoute from '../routes/auth';
 
-export default Ember.Route.extend({
+export default authRoute.extend({
     model: function() {
+    	console.log()
         return this.store.find('todo');
     }
 });

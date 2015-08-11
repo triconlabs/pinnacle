@@ -52,9 +52,9 @@
                 <paper-radio-button name="Female" label="Female"></paper-radio-button>
             {{/view}}
         </paper-item>
-        {{#each skill in expertise}}
-            <paper-item class="user-list" horizontal layout center noink>
-                {{radio-button toggles="true" name=skill.skill label=skill.skill checked=skill.show question=question skill=skill.skill user=model}}
+        {{#each skill in model.skills}}
+            <paper-item {{action 'gotoExpertise' skill.objectId}} >
+                afasdf
             </paper-item>
         {{/each}}
         <paper-item class="user-list" horizontal layout center noink>

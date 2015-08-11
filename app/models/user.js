@@ -9,7 +9,7 @@ export default ParseUser.extend({
     answer: DS.belongsTo('answer', {async: true}),
     gender : DS.attr('string'),
     objectId : DS.attr('string'),
-    expertise : DS.attr()
+    skills : DS.attr()
 
     /**
      * This model already has this attributes.

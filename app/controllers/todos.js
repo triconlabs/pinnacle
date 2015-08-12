@@ -94,7 +94,7 @@ export default Ember.ArrayController.extend({
         console.log(remaining+"pppppppppasdasdddddddddddddd");
         
         return 100*completed/(remaining+completed)
-    }.property('completed.length'),
+    }.property('completed.length' , 'length'),
 
     allAreDone: function(key, value) {
         if (value !== undefined) {

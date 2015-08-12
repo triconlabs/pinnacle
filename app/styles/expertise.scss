@@ -1,0 +1,15 @@
+.expertise-wrapper {
+    height: 100%;
+    width: 100%;
+    .tag-label {
+        margin: 20px;
+        margin-right: 2px;
+        padding: 3px;
+        position: relative;
+        top: 20px;
+        font-size: 23px;
+        border-radius: 2px;
+        background-color: rgba(139, 245, 51, 0.9);
+        color: white;
+    }
+}

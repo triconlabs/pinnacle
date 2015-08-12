@@ -1,8 +1,8 @@
 <div class="todo-wrapper">
     <section id="todoapp">
         <header id="header">
-        <paper-progress value={{progress}}>
-                 </paper-progress>
+            <paper-progress value= {{progress}}>
+            </paper-progress>
             {{todo-input id="new-todo" type="text" value=todoInputText action="createTodo" placeholder="What needs to be done?"}}
         </header>
         {{#if model}}
@@ -12,7 +12,7 @@
                     {{#each todo in model itemController="todo" }}
                         {{#with todo}}
                             {{#view 'todo-card' checked=todo.isCompleted}}
-                                <paper-item noink class="item-list">
+                                <paper-item noink class="todoTitle">
                                     <li {{bind-attr class="todo.isCompleted:completed isEditing:editing" }} horizontal layout center>
                                         {{#if isEditing}}
                                             {{todo-input type="text" class="edit" value=bufferedTitle focus-out="doneEditing" insert-newline="doneEditing" escape-press="cancelEditing"}}
@@ -26,13 +26,15 @@
                                 {{#each tag in todo.tags}}
                                     <label {{action "gotoExpertise" tag bubbles=false}} class="tag-label" flex> #{{tag}}</label>
                                 {{/each}}
+                                <paper-item noink class="todoDescription">
+                                    <label flex>{{todo.description}} </label>
+                                </paper-item>
                             {{/view}}
                         {{/with}}
                     {{/each}}
                 </ul>
             </section>
             <footer id="footer">
-                
                 <span id="todo-count"><strong>{{remaining.length}}</strong>  left</span>
                 <ul id="filters">
                 </ul>

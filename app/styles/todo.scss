@@ -39,6 +39,9 @@
         border-radius: 2px;
         left: -300px;
         background-color: rgba(44, 218, 11, 0.45);
+        .todoDescription{
+            color : white;
+        }
         ::shadow #checkbox.checked {
             background-color: transparent;
             border-color: transparent;
@@ -210,6 +213,9 @@
     #todo-list li .toggle:checked:after {
         content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
     }
+    .todoDescription {
+        font-size: 13px;
+    }
     #todo-list li label {
         white-space: pre;
         word-break: break-word;
@@ -250,6 +256,7 @@
     #footer {
         color: #bbb;
         padding: 10px 15px;
+        margin-bottom: 30px;
         height: 20px;
         text-align: center;
     }

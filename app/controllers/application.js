@@ -38,6 +38,7 @@ export default Ember.Controller.extend({
             this.get('session').invalidate().then(function() {
                 self.store.unloadAll('question');
                 self.store.unloadAll('answer');
+                self.store.unloadAll('todo');
                 self.store.unloadAll('user');
                 self.set('content', null);
                 $('core-drawer-panel')[0].togglePanel();

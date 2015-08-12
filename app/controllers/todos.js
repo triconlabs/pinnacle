@@ -88,6 +88,14 @@ export default Ember.ArrayController.extend({
     remaining: Ember.computed.filterBy('model', 'isCompleted', false),
     completed: Ember.computed.filterBy('model', 'isCompleted', true),
 
+    progress : function(){
+        var remaining = this.get("model").filterBy("isCompleted", false).get("length");
+        var completed = this.get("model").filterBy("isCompleted", true).get("length");
+        console.log(remaining+"pppppppppasdasdddddddddddddd");
+        
+        return 100*completed/(remaining+completed)
+    }.property('completed.length'),
+
     allAreDone: function(key, value) {
         if (value !== undefined) {
             this.setEach('isCompleted', value);

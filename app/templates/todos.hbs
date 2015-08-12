@@ -1,6 +1,8 @@
 <div class="todo-wrapper">
     <section id="todoapp">
         <header id="header">
+        <paper-progress value={{progress}}>
+                 </paper-progress>
             {{todo-input id="new-todo" type="text" value=todoInputText action="createTodo" placeholder="What needs to be done?"}}
         </header>
         {{#if model}}
@@ -9,28 +11,28 @@
                 <ul id="todo-list">
                     {{#each todo in model itemController="todo" }}
                         {{#with todo}}
-                            {{#view 'slide-in' checked=todo.isCompleted}}
+                            {{#view 'todo-card' checked=todo.isCompleted}}
                                 <paper-item noink class="item-list">
                                     <li {{bind-attr class="todo.isCompleted:completed isEditing:editing" }} horizontal layout center>
                                         {{#if isEditing}}
                                             {{todo-input type="text" class="edit" value=bufferedTitle focus-out="doneEditing" insert-newline="doneEditing" escape-press="cancelEditing"}}
                                         {{else}}
-                                            {{paper-checkbox checked=todo.isCompleted}}
-                                            <!-- {{input type="checkbox" class="toggle" checked=todo.isCompleted}} -->
-                                            <label {{action "editTodo"}} flex>{{todo.title}} </label>
-                                            {{#each tag in todo.tags}}
-                                                <label {{action "gotoExpertise" tag}} flex> #{{tag}}</label>
-                                            {{/each}}
-                                            <button {{action "removeTodo"}} class="destroy"></button>
+                                            {{paper-checkbox checked=todo.isCompleted bubbles=false}}
+                                            <label {{action "editTodo" on="doubleClick" bubbles=false}} flex>{{todo.title}} </label>
+                                            <button {{action "removeTodo" bubbles=false}} class="destroy"></button>
                                         {{/if}}
                                     </li>
                                 </paper-item>
+                                {{#each tag in todo.tags}}
+                                    <label {{action "gotoExpertise" tag bubbles=false}} class="tag-label" flex> #{{tag}}</label>
+                                {{/each}}
                             {{/view}}
                         {{/with}}
                     {{/each}}
                 </ul>
             </section>
             <footer id="footer">
+                
                 <span id="todo-count"><strong>{{remaining.length}}</strong>  left</span>
                 <ul id="filters">
                 </ul>

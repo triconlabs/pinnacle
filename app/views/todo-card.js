@@ -22,5 +22,37 @@ export default Ember.View.extend({
             left: '-300px'
         }, 0);
         this._super();
+    },
+    click: function(evt) {},
+    focusOut: function() {
+        this.$().animate({
+            height: '77px'
+        }, 10);
+
+        this.set('isEditing', false);
+    },
+    mouseEnter: function() {
+
+        this.$().animate({
+            height: '200px'
+        }, 10);
+
+
+
+
+    },
+    mouseLeave: function() {
+        this.$().animate({
+            height: '77px'
+        }, 10);
+
+    },
+    focusIn: function() {
+        this.$().animate({
+            height: '200px'
+        }, 10);
+
+
+
     }
 });

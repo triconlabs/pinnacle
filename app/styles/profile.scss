@@ -15,6 +15,7 @@
     paper-button {
         background-color: rgba(0, 22, 206, 0.64);
         color: white;
+        margin-top : 10px;
     }
     .core-toolbar-custom {
         paper-button {
@@ -34,8 +35,11 @@
         padding: 5px 5px;
     }
     .expertise-list{
-        margin-top : 30px;    
+        margin-top : 30px;
     }
+     .expertise-list::shadow .button-content{
+            display : block
+        }
     .question {
         width: 50%;
         min-width: 300px;

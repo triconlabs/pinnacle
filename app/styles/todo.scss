@@ -12,6 +12,12 @@
         width: 85%;
         display: none;
     }
+    .highLighter{
+        background: linear-gradient(#DCE6F8, #BDCFF1) repeat scroll 0 0 rgba(0, 0, 0, 0);
+        border-radius: 2px;
+        box-shadow: 0 0 0 1px #A3BCEA;
+        font-weight: normal;
+    }
     .post-span {
         width: 100%;
         paper-input {

@@ -52,7 +52,7 @@
                 <paper-radio-button name="Female" label="Female"></paper-radio-button>
             {{/view}}
         </paper-item>
-        <paper-item horizontal layout class="expertise-list">
+        <paper-item class="expertise-list">
         {{#each skill in model.skills}}
             <paper-button raised {{action 'gotoExpertise' skill}}>
                 {{skill}}

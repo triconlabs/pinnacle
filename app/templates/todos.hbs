@@ -1,14 +1,17 @@
 <div class="todo-wrapper">
     <section id="todoapp">
-        <header id="header">
-            <paper-progress value= {{progress}}>
-            </paper-progress>
-            {{todo-input id="new-todo" type="text" value=todoInputText action="createTodo" placeholder="What needs to be done?"}}
-            <span class="highLighter"></span>
-        </header>
+        <div id="header">
+            <div id="navi" horizontal layout center>
+                <span class="textHightLight">{{{highLightedText}}}</span>
+            </div>
+            <div id="infoi" horizontal layout center>
+                {{input type="text" id="todoInput" value=this.todoInputText action="createTodo" placeholder="What needs to be done?"}}
+            </div>
+        </div>
         {{#if model}}
             <section id="main">
-                {{#if canToggle}} {{input type="checkbox" id="toggle-all" checked=allTodos.allAreDone}} {{/if}}
+                <!-- {{#if canToggle}} 
+                 {{input type="checkbox" id="toggle-all" checked=allTodos.allAreDone}} {{/if}} -->
                 <ul id="todo-list">
                     {{#each todo in model itemController="todo" }}
                         {{#with todo}}

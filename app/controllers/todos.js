@@ -3,12 +3,13 @@ import Ember from 'ember';
 export default Ember.ArrayController.extend({
     needs: ['todos'],
     todoInputText: '',
-    parsetodoInputText: function() {
+    highLightedText: function() {
         var string = this.get('todoInputText');
+        console.log(string);
+        var regexp = new RegExp('#([^\\s]*)', 'g');
+        var title = string.replace(regexp, '<span class="highLighter">$&</span>');
 
-        if (string[string.length - 1] == '#') {
-            alert("hash begin");
-        }
+        return title;
     }.property('todoInputText'),
     allTodos: Ember.computed.alias('controllers.todos'),
     itemController: 'todo',
@@ -88,13 +89,13 @@ export default Ember.ArrayController.extend({
     remaining: Ember.computed.filterBy('model', 'isCompleted', false),
     completed: Ember.computed.filterBy('model', 'isCompleted', true),
 
-    progress : function(){
+    progress: function() {
         var remaining = this.get("model").filterBy("isCompleted", false).get("length");
         var completed = this.get("model").filterBy("isCompleted", true).get("length");
-        console.log(remaining+"pppppppppasdasdddddddddddddd");
-        
-        return 100*completed/(remaining+completed)
-    }.property('completed.length' , 'length'),
+        console.log(remaining + "pppppppppasdasdddddddddddddd");
+
+        return 100 * completed / (remaining + completed)
+    }.property('completed.length', 'length'),
 
     allAreDone: function(key, value) {
         if (value !== undefined) {

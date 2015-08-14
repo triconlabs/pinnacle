@@ -1,11 +1,13 @@
 <div class="todo-wrapper">
     <section id="todoapp">
+            <paper-progress value= {{progress}}>
+            </paper-progress>
         <div id="header">
             <div id="navi" horizontal layout center>
                 <span class="textHightLight">{{{highLightedText}}}</span>
             </div>
             <div id="infoi" horizontal layout center>
-                {{input type="text" id="todoInput" value=this.todoInputText action="createTodo" placeholder="What needs to be done?"}}
+                {{textarea type="text" id="todoInput" value=this.todoInputText action="createTodo" placeholder="What needs to be done?"}}
             </div>
         </div>
         {{#if model}}

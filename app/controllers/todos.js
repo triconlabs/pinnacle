@@ -2,7 +2,13 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
     needs: ['todos'],
+    sortProperties: ['createdAt'],
     todoInputText: '',
+    sortProperties: ['createdAt:desc'],
+    sortedModel: Ember.computed.sort("model", "sortProperties"),
+    reverse: function() {
+        return this.get('model').toArray().reverse();
+    }.property('model.@each'),
     highLightedText: function() {
         var string = this.get('todoInputText');
         console.log(string);

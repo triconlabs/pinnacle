@@ -99,6 +99,9 @@
         width: 100%;
         display: block;
     }
+    paper-progress::shadow #activeProgress {
+        background-color: #2AB27B;
+    }
     button {
         margin: 0;
         padding: 0;

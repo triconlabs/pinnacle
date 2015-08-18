@@ -6,7 +6,6 @@
     }
     .core-toolbar-custom {
         font-size: medium;
-   
     }
     overflow: auto;
     height: inherit;
@@ -77,5 +76,8 @@
     }
     paper-item::shadow .button-content {
         padding: 0px;
+    }
+    .miniToolbar {
+        background-color: #3F51B5;
     }
 }

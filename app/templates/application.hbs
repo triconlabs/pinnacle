@@ -11,14 +11,20 @@
                 <paper-item {{action 'profile'}}>
                     PROFILE
                 </paper-item>
-                {{#if admin}}
+                <paper-item>
+                    {{#link-to 'todos'}}
+                        DASHBOARD
+                    {{/link-to}}
+                </paper-item>
+                <paper-item {{action 'logout'}}>
+                    LOGOUT
+                </paper-item>
+                <!-- {{#if admin}}
                     <paper-item {{action 'users'}}>
                         USERS
                     </paper-item>
                     <paper-item {{action 'question'}}>
-                        
-                            QUESTIONS
-                        
+                        QUESTIONS
                     </paper-item>
                 {{/if}}
                 <paper-item>
@@ -26,20 +32,12 @@
                         WORDCLOUD
                     {{/link-to}}
                 </paper-item>
-                                <paper-item>
-                    {{#link-to 'todos'}}
-                        TODO LIST
-                    {{/link-to}}
-                </paper-item>
                 <paper-item {{action 'test'}}>
                     FORM
                 </paper-item>
                 <paper-item {{action 'feedback'}}>
                     FEEDBACK
-                </paper-item>
-                <paper-item {{action 'logout'}}>
-                    LOGOUT
-                </paper-item>
+                </paper-item> -->
             </div>
         </core-header-panel>
     {{/if}}

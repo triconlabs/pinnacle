@@ -70,11 +70,14 @@
         border-radius: 2px;
         left: -300px;
         height: 77px;
+        overflow: hidden;
     }
     .done {
+        overflow: hidden;
         margin-top: 10px;
         border-radius: 2px;
         left: -300px;
+        height: 77px;
         background-color: rgba(44, 218, 11, 0.45);
         .todoDescription {
             color: white;
@@ -100,7 +103,7 @@
         display: block;
     }
     paper-progress::shadow #activeProgress {
-        background-color: #2AB27B;
+        background-color: rgba(44, 218, 11, 0.45);
     }
     button {
         margin: 0;
@@ -275,7 +278,7 @@
     #todo-list li label {
         white-space: pre;
         word-break: break-word;
-        padding: 15px 60px 15px 15px;
+        padding: 15px 15px 15px 15px;
         margin-left: 0px;
         display: inline-block;
         line-height: 1.2;

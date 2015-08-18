@@ -11,6 +11,7 @@ export default Ember.ObjectController.extend({
     actions: {
         editTodo: function() {
             this.set('isEditing', true);
+            
         },
 
         doneEditing: function() {

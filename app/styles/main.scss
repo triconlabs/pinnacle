@@ -5,7 +5,9 @@ body {
     margin: 0px;
     padding: 0px;
     font-family: ''Robotoregular'';
-    background-color: #3F51B5;
+    background-color: #5C5C5F;
+    transition : all ease-in 0.3s;
+    font-family : 'Robotoregular';
 }
 
 $c-red: #d79d91;
@@ -57,7 +59,7 @@ core-header-panel {
 
 .core-toolbar-custom {
     color: #fff;
-    background-color: #3F51B5;
+    background-color: transparent;
     z-index: 100;
     width: 100%;
 }

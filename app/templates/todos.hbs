@@ -8,6 +8,7 @@
             </div>
             <div id="infoi" horizontal layout center>
                 {{textarea spellcheck="false" type="text" id="todoInput" value=this.todoInputText action="createTodo" placeholder="What needs to be done?"}}
+                
             </div>
         </div>
         {{#if model}}
@@ -43,7 +44,7 @@
                 </ul>
             </section>
             <footer id="footer">
-                <span id="todo-count"><strong>{{remaining.length}}</strong>  left</span>
+                <span id="todo-count"><strong>{{remaining.length}} of {{length}} </strong>  left</span>
                 <ul id="filters">
                 </ul>
                 {{#if completed.length}}

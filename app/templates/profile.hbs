@@ -1,30 +1,7 @@
 <div class="profile-wrapper" fit>
-    <core-toolbar class="core-toolbar-users">
-        {{material-icon action='goBack' icon='arrow-back'}}
-        <div flex> </div>
-        {{#if navbarSearch}}
-            {{#view 'paper-toggle'}}{{/view}}
-            <paper-menu-button>
-                <paper-icon-button class="searchBack" icon="search" noink></paper-icon-button>
-                <paper-dropdown class="dropdown searchBar core-transition core-closed" halign="right" valign="top" flex="true" autoclosedisabled="true" closeattribute="core-overlay-toggle" autofocusdisabled="false">
-                    <paper-item horizontal start-justified layout class="paper-item-custom-navbar">
-                        <paper-icon-button icon="arrow-back" core-overlay-toggle="true"></paper-icon-button>
-                        {{search-input action="search" value=reportSearchText}}
-                        <paper-icon-button icon="close"></paper-icon-button>
-                    </paper-item>
-                </paper-dropdown>
-            </paper-menu-button>
-        {{/if}}
-        {{#if navbarEdit}}
-            {{#if navbarUpload}}
-                {{view uploadfile myupload='frikkinupload' id="admyupload" class="add-my-upload" name="files" multiple="multiple"}}
-                {{#view 'paper-icon' icon="attachment" action="upload" }}{{/view}}
-            {{/if}}
-            {{material-icon action='moreOptions' icon='done'}}
-        {{/if}}
-    </core-toolbar>
+ 
     {{#view 'slide-in'}}
-        <core-toolbar class="core-toolbar-custom">
+        <core-toolbar class="core-toolbar-custom miniToolbar">
             <paper-button noink>
                 PROFILE
             </paper-button>
@@ -33,36 +10,37 @@
                 <core-icon icon="check" class="check-icon"></core-icon>
             {{/if}}
         </core-toolbar>
-        <paper-item class="user-list" horizontal layout center {{action 'setProfilePicture'}}>
-            <div horizontal layout center flex class="user-list-div">
-                <core-icon {{bind-attr src=model.image}}></core-icon>
-                <div flex class="user-list-name">
-                    {{model.username}}
-                </div>
-            </div>
-        </paper-item>
-        <paper-item class="user-list" horizontal layout center noink>
-            <paper-input-decorator disabled>
-                {{input type="email" value=model.email }}
+        <div class="userList" horizontal layout >
+       
+                <img src= {{model.image}} id="userimg">
+                <div flex></div>
+                <paper-button raised id="uploadImg" {{action 'setProfilePicture'}}>upload photo</paper-button>
+       
+        </div>
+        
+        <div class="userList" horizontal layout center>
+            <paper-input-decorator label="Mail-Id" floatingLabel="true" >
+                {{input type="text" value=model.email id="password" action="login"}}
             </paper-input-decorator>
-        </paper-item>
-        <paper-item class="user-list" horizontal layout center noink>
+        </div>
+        <div class="userList" horizontal layout center>
             {{#view 'radio-group' selected=model.gender user=model}}
                 <paper-radio-button name="Male" label="Male"></paper-radio-button>
                 <paper-radio-button name="Female" label="Female"></paper-radio-button>
             {{/view}}
-        </paper-item>
-        <paper-item class="expertise-list">
+        </div>
+        
+        <div class="userList expertise-list">
         {{#each skill in model.skills}}
-            <paper-button raised {{action 'gotoExpertise' skill}}>
-                {{skill}}
-            </paper-button>
+            <span class="tagLabel" {{action 'gotoExpertise' skill}}>
+                #{{skill}}
+            </span>
         {{/each}}
-        </paper-item>
-        <paper-item class="user-list" horizontal layout center noink>
-            <paper-input-decorator>
+        </div>
+        <div class="userList" horizontal layout center>
+            <paper-input-decorator floatingLabel="true" label="Add more skills">
                 {{input type="text" id="expertise-input" value=newExpertise action="addSkill"}}
             </paper-input-decorator>
-        </paper-item>
+        </div>
     {{/view}}
 </div>

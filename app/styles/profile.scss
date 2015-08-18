@@ -1,4 +1,24 @@
 .profile-wrapper {
+    .tagLabel {
+        background-color: #CECECE;
+        padding: 0px 6px;
+        margin: 5px 5px;
+    }
+    paper-radio-button::shadow #ink[checked] {
+        color: rgba(0, 22, 206, 0.64);
+    }
+    paper-radio-button::shadow #onRadio {
+        background-color: rgba(0, 22, 206, 0.64);
+    }
+    paper-radio-button[checked]::shadow #offRadio {
+        border-color: rgba(0, 22, 206, 0.64);
+    }
+    #userimg {
+        height: 40px;
+        border-radius: 50%;
+        width: 40px;
+    }
+    #uploadImg {}
     .core-toolbar-users {
         background-color: transparent;
         color: #fff;
@@ -15,31 +35,23 @@
     paper-button {
         background-color: rgba(0, 22, 206, 0.64);
         color: white;
-        margin-top : 10px;
+        margin-top: 10px;
     }
     .core-toolbar-custom {
         paper-button {
             font-size: medium;
             background-color: transparent;
         }
-        core-icon {
-            height: 24px;
-            width: 24px;
-            border-radius: 50%;
-            font-size: small;
-            overflow: hidden;
-            background-color: transparent;
-        }
     }
-    paper-button::shadow .button-content{
+    paper-button::shadow .button-content {
         padding: 5px 5px;
     }
-    .expertise-list{
-        margin-top : 30px;
+    .expertise-list {
+        margin-top: 30px;
     }
-     .expertise-list::shadow .button-content{
-            display : block
-        }
+    .expertise-list::shadow .button-content {
+        display: block
+    }
     .question {
         width: 50%;
         min-width: 300px;
@@ -65,10 +77,10 @@
         top: -500px;
         background-color: #fff;
     }
-    .user-list {
+    .userList {
         margin-top: 10px;
         background-color: white;
-        height: 56px;
+        height: auto;
         padding: 8px 24px;
         box-sizing: border-box;
         position: relative;
@@ -93,5 +105,8 @@
     }
     paper-item::shadow .button-content {
         padding: 0px;
+    }
+    .miniToolbar {
+        background-color: #3F51B5;
     }
 }

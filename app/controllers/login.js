@@ -119,9 +119,9 @@ export default Ember.Controller.extend({
             this.store.all('user').filter(function(model) {
                 if (model.get('id') == _this.get('session.userId')) {
                     _this.set('controllers.application.user', model);
-                    _this.set("username", "");
-                    _this.set("password", "");
-                    _this.set("email", "");
+                   //_this.set("username", "");
+                    //_this.set("password", "");
+                    //_this.set("email", "");
                     _this.send('reloadData', true);
                 }
             })

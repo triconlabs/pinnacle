@@ -1,8 +1,9 @@
 .profile-wrapper {
     .tagLabel {
-        background-color: #CECECE;
+        background-color: rgba(234, 234, 234, 0.67);
         padding: 0px 6px;
         margin: 5px 5px;
+        display: inline-block;
     }
     paper-radio-button::shadow #ink[checked] {
         color: rgba(0, 22, 206, 0.64);
@@ -12,6 +13,19 @@
     }
     paper-radio-button[checked]::shadow #offRadio {
         border-color: rgba(0, 22, 206, 0.64);
+    }
+    #mailId {
+        margin: 0px;
+    }
+    #skillInput {
+        margin: 0px;
+        margin-top: 0px;
+        font-size: medium;
+        max-width: 180px;
+    }
+    #addSkill {
+        background-color: rgba(33, 197, 38, 0.64);
+        font-size : 0.8em;
     }
     #userimg {
         height: 40px;

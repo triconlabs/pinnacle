@@ -1,6 +1,7 @@
 import Ember from 'ember';
 export default Ember.Controller.extend({
     needs: ['application'],
+    'editSkill' : false,
     'newExpertise': "",
     gender: function(argument) {
         if (this.get('model.gender') == 'Male') {
@@ -20,6 +21,9 @@ export default Ember.Controller.extend({
         return array;
     }.property('model.expertise'),
     actions: {
+        edit : function(){
+            this.toggleProperty('editSkill');
+        },
         gotoExpertise: function(param) {
             var _this = this;
             this.store.find('expertise', {
@@ -36,7 +40,6 @@ export default Ember.Controller.extend({
             })
         },
         setProfilePicture: function(e) {
-            e.preventDefault();
             var _this = this;
             var file = $('#upload')[0].files[0];
             var serverUrl = 'https://api.parse.com/1/files/' + file.name;
@@ -81,8 +84,6 @@ export default Ember.Controller.extend({
                     owner: this.get('session.userId')
                 };
                 expertise.save().then(function() {
-                    $('#toast').attr('text', 'question added');
-                    Ember.$('#toast')[0].show();
                     _this.set('model.expertise')
                     var skill = ($("#expertise-input").val()).toString()
                     _this.get('session.user').get('skills').pushObject(skill);
@@ -90,12 +91,14 @@ export default Ember.Controller.extend({
                         var key = _this.get('session.sessionStoreKey'),
                             user = _this.get('controllers.application.user');
                         console.log("user saved with new profile pic");
-                        $('#toast').attr('text', 'profile picture saved');
+                        var toastMessage = 'levelled up '+_this.get('newExpertise');
+                        $('#toast').attr('text', toastMessage);
                         Ember.$('#toast')[0].show();
                         var args = JSON.parse(localStorage[key]);
                         args._response.skills = user.get('skills');
                         localStorage.setItem(key, JSON.stringify(args));
                         _this.set('newExpertise', "");
+                        _this.toggleProperty("editSkill");
                     })
                 })
             } else {

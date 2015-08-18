@@ -20,27 +20,31 @@
         
         <div class="userList" horizontal layout center>
             <paper-input-decorator label="Mail-Id" floatingLabel="true" >
-                {{input type="text" value=model.email id="password" action="login"}}
+                {{input type="text" value=model.email id="mailId" action="login"}}
             </paper-input-decorator>
         </div>
-        <div class="userList" horizontal layout center>
+    <!--    <div class="userList" horizontal layout center>
             {{#view 'radio-group' selected=model.gender user=model}}
                 <paper-radio-button name="Male" label="Male"></paper-radio-button>
                 <paper-radio-button name="Female" label="Female"></paper-radio-button>
             {{/view}}
-        </div>
+        </div> -->
         
         <div class="userList expertise-list">
         {{#each skill in model.skills}}
-            <span class="tagLabel" {{action 'gotoExpertise' skill}}>
+            <div class="tagLabel" {{action 'gotoExpertise' skill}}>
                 #{{skill}}
-            </span>
+            </div>
         {{/each}}
         </div>
         <div class="userList" horizontal layout center>
-            <paper-input-decorator floatingLabel="true" label="Add more skills">
+        {{#if editSkill}}
+           
                 {{input type="text" id="expertise-input" value=newExpertise action="addSkill"}}
-            </paper-input-decorator>
+           
+        {{else}}
+            <paper-button raised id="addSkill" {{action 'edit'}} >add skill</paper-button>
+        {{/if}}
         </div>
     {{/view}}
 </div>

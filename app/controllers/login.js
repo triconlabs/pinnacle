@@ -84,13 +84,8 @@ export default Ember.Controller.extend({
         },
         profileInfo: function() {
             //show something , hide something else
-            //get expertise list
-            this.store.find('expertise').then(function(model){
-
-            });
-            //display expertise list
-            //(maybe in the component) on user action select expertise , add to user and save user
-            //go to login
+            
+            //change of plans, go to profile as first time user, if first time user then show first time things
         },
         showMe: function() {
             $('core-collapse').toggle()

@@ -1,5 +1,4 @@
 <div class="user-wrapper profile-wrapper" fit>
-  
     {{#view 'slide-in'}}
         <core-toolbar class="core-toolbar-custom miniToolbar">
             <paper-button noink>
@@ -10,29 +9,35 @@
                 <core-icon icon="check" class="check-icon"></core-icon>
             {{/if}}
         </core-toolbar>
-        <div class="userList" horizontal layout >
-       
-                <img src= {{model.image}} id="userimg">
-                <div flex></div>
-                
-       
+        <div class="userList" horizontal layout>
+            <img src= {{model.image}} id="userimg">
+            <div flex></div>
         </div>
-        
         <div class="userList" horizontal layout center>
-            <paper-input-decorator label="Mail-Id" floatingLabel="true" >
+            <paper-input-decorator label="Mail-Id" floatingLabel="true">
                 {{input type="text" value=model.email id="mailId" disabled=true}}
             </paper-input-decorator>
         </div>
-    
-        
-        <div class="userList expertise-list">
-        {{#each skill in model.skills}}
-            <div class="tagLabel" {{action 'gotoExpertise' skill}}>
-                #{{skill}}
+        {{#if model.skills}}
+            <div class="userList expertise-list">
+                <div class="subTitleLabel">
+                    <span class="subTitleLabelText">
+                        Skills
+                        </span>
+                </div>
+                {{#each skill in model.skills}}
+                    <div class="tagLabel" {{action 'gotoExpertise' skill}}>
+                        #{{skill}}
+                    </div>
+                {{/each}}
             </div>
-        {{/each}}
-        </div>
-       
+        {{/if}}
     {{/view}}
-
+    {{#if model.githubName}}
+        {{#view 'slide-in' id="githubCard" }}
+            <div class="userList" horizontal layout center>
+                {{github-user githubName=model.githubName}}
+            </div>
+        {{/view}}
+    {{/if}}
 </div>

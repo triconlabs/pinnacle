@@ -1,5 +1,5 @@
 <div class="profile-wrapper" fit>
-    {{view 'uploadfile' myupload='frikkinupload' id="upload" class="add-my-upload" name="files" multiple="multiple"}} 
+    {{view 'uploadfile' myupload='frikkinupload' id="upload" class="add-my-upload" name="files" multiple="multiple"}}
     {{#view 'slide-in'}}
         <core-toolbar class="core-toolbar-custom miniToolbar">
             <paper-button noink>
@@ -10,41 +10,48 @@
                 <core-icon icon="check" class="check-icon"></core-icon>
             {{/if}}
         </core-toolbar>
-        <div class="userList" horizontal layout >
-       
-                <img src= {{model.image}} id="userimg">
-                <div flex></div>
-                <paper-button raised id="uploadImg" {{action 'setProfilePicture'}}>upload photo</paper-button>
-       
+        <div class="userList" horizontal layout>
+            <img src= {{model.image}} id="userimg">
+            <div flex></div>
+            <paper-button raised id="uploadImg" {{action 'setProfilePicture'}}>upload photo</paper-button>
         </div>
-        
         <div class="userList" horizontal layout center>
-            <paper-input-decorator label="Mail-Id" floatingLabel="true" >
+            <paper-input-decorator label="Mail-Id" floatingLabel="true">
                 {{input type="text" value=model.email id="mailId" action="login"}}
             </paper-input-decorator>
         </div>
-    <!--    <div class="userList" horizontal layout center>
+        <!--    <div class="userList" horizontal layout center>
             {{#view 'radio-group' selected=model.gender user=model}}
                 <paper-radio-button name="Male" label="Male"></paper-radio-button>
                 <paper-radio-button name="Female" label="Female"></paper-radio-button>
             {{/view}}
         </div> -->
-        
-        <div class="userList expertise-list">
-        {{#each skill in model.skills}}
-            <div class="tagLabel" {{action 'gotoExpertise' skill}}>
-                #{{skill}}
+        {{#if model.skills}}
+            <div class="userList expertise-list">
+                <div class="subTitleLabel">
+                    <span class="subTitleLabelText">
+                        Skills
+                        </span>
+                </div>
+                {{#each skill in model.skills}}
+                    <div class="tagLabel" {{action 'gotoExpertise' skill}}>
+                        #{{skill}}
+                    </div>
+                {{/each}}
             </div>
-        {{/each}}
-        </div>
-        <div class="userList" horizontal layout center>
-        {{#if editSkill}}
-           
-                {{input type="text" id="expertise-input" value=newExpertise action="addSkill"}}
-           
-        {{else}}
-            <paper-button raised id="addSkill" {{action 'edit'}} >add skill</paper-button>
         {{/if}}
+        <div class="userList" horizontal layout center>
+            {{#if editSkill}}
+                {{input type="text" id="expertise-input" value=newExpertise action="addSkill"}}
+            {{else}}
+                <paper-button raised id="addSkill" {{action 'edit'}}>add skill</paper-button>
+            {{/if}}
+   
+        </div>
+    {{/view}}
+    {{#view 'slide-in' id="githubCard"}}
+        <div class="userList" horizontal layout center>
+            {{github-user githubName=model.githubName}}
         </div>
     {{/view}}
 </div>

@@ -9,6 +9,7 @@ export default ParseUser.extend({
     answer: DS.belongsTo('answer', {async: true}),
     gender : DS.attr('string'),
     objectId : DS.attr('string'),
+    githubName : DS.attr('string'),
     skills : DS.attr()
 
     /**

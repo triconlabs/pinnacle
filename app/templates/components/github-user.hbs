@@ -1,0 +1,11 @@
+{{yield}}
+<div class="subTitleLabel">
+    <span class="subTitleLabelText">
+                      GITHUB CARD 
+                        </span>
+</div>
+<div class="userList" horizontal layout>
+    <img src= {{githubUser.avatar_url}} class="githubUserImage">
+    
+    <div class="githubName" flex vertical layout> <a target="_blank" href={{githubUser.html_url}}> {{githubUser.login}}</a><span class="subTitleLabelText githubCompany">{{githubUser.company}} </span></div>
+</div>

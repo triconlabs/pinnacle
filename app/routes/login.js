@@ -9,5 +9,8 @@ export default Ember.Route.extend({
             // do stuff with the  user
             this.transitionTo('todos');
         }
+    },
+    model : function(){
+    	return this.store.find('expertise');
     }
 });

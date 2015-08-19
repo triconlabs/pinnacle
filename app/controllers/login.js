@@ -82,6 +82,16 @@ export default Ember.Controller.extend({
                 });
             }
         },
+        profileInfo: function() {
+            //show something , hide something else
+            //get expertise list
+            this.store.find('expertise').then(function(model){
+
+            });
+            //display expertise list
+            //(maybe in the component) on user action select expertise , add to user and save user
+            //go to login
+        },
         showMe: function() {
             $('core-collapse').toggle()
         },
@@ -119,7 +129,7 @@ export default Ember.Controller.extend({
             this.store.all('user').filter(function(model) {
                 if (model.get('id') == _this.get('session.userId')) {
                     _this.set('controllers.application.user', model);
-                   //_this.set("username", "");
+                    //_this.set("username", "");
                     //_this.set("password", "");
                     //_this.set("email", "");
                     _this.send('reloadData', true);

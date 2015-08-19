@@ -1,9 +1,9 @@
 <div class="profile-wrapper" fit>
- 
+    {{view 'uploadfile' myupload='frikkinupload' id="upload" class="add-my-upload" name="files" multiple="multiple"}} 
     {{#view 'slide-in'}}
         <core-toolbar class="core-toolbar-custom miniToolbar">
             <paper-button noink>
-                PROFILE
+                {{model.username}}
             </paper-button>
             <div flex></div>
             {{#if model.submitted}}

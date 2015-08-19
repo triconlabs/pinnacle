@@ -15,4 +15,14 @@
             {{/view}}
         </div>
     {{/view}}
+        {{#view 'slide-in' class="profileInfo"}}
+        <div class="login-name"><span>EXPERTISE</span>
+           <paper-button {{action 'profileInfo'}} raised>get expertise</paper-button>
+        </div>
+        <div layout vertical class="form-wrapper">
+           {{#each skill in model}}
+                {{skill.skill}}
+           {{/each}}
+        </div>
+    {{/view}}
 </div>

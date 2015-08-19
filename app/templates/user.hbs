@@ -1,52 +1,38 @@
-<div class="user-wrapper" fit>
-    <core-toolbar class="core-toolbar-users">
-        {{material-icon action='goBack' icon='arrow-back'}}
-        <div flex> </div>
-        {{#if navbarSearch}}
-            {{#view 'paper-toggle'}}{{/view}}
-            <paper-menu-button>
-                <paper-icon-button class="searchBack" icon="search" noink></paper-icon-button>
-                <paper-dropdown class="dropdown searchBar core-transition core-closed" halign="right" valign="top" flex="true" autoclosedisabled="true" closeattribute="core-overlay-toggle" autofocusdisabled="false">
-                    <paper-item horizontal start-justified layout class="paper-item-custom-navbar">
-                        <paper-icon-button icon="arrow-back" core-overlay-toggle="true"></paper-icon-button>
-                        {{search-input action="search" value=reportSearchText}}
-                        <paper-icon-button icon="close"></paper-icon-button>
-                    </paper-item>
-                </paper-dropdown>
-            </paper-menu-button>
-        {{/if}}
-        {{#if navbarEdit}}
-            {{#if navbarUpload}}
-                {{view uploadfile myupload='frikkinupload' id="admyupload" class="add-my-upload" name="files" multiple="multiple"}}
-                {{#view 'paper-icon' icon="attachment" action="upload" }}{{/view}}
-            {{/if}}
-            {{material-icon action='moreOptions' icon='done'}}
-        {{/if}}
-    </core-toolbar>
-    <paper-shadow class="question">
-        <paper-item class="user-list" vertical layout>
-            <div horizontal layout flex center class="user-list-div">
-                <core-icon {{bind-attr src=model.image}}></core-icon>
-                <div flex class="user-list-name">
-                    {{model.username}}
-                </div>
-                {{#if model.submitted}}
-                    <core-icon icon="check" class="check-icon"></core-icon>
-                {{/if}}
-            </div>
-        </paper-item>
-    </paper-shadow>
-    {{#if mycontent}}
+<div class="user-wrapper profile-wrapper" fit>
+  
     {{#view 'slide-in'}}
-    
-        {{#each question in mycontent}}
-            <paper-input-decorator {{bind-attr label=question.question}} disabled floatingLabel="true">
-                <paper-autogrow-textarea>
-                    <textarea disabled {{bind-attr name=question.number}}>{{question.userAnswer}}</textarea>
-                </paper-autogrow-textarea>
+        <core-toolbar class="core-toolbar-custom miniToolbar">
+            <paper-button noink>
+                {{model.username}}
+            </paper-button>
+            <div flex></div>
+            {{#if model.submitted}}
+                <core-icon icon="check" class="check-icon"></core-icon>
+            {{/if}}
+        </core-toolbar>
+        <div class="userList" horizontal layout >
+       
+                <img src= {{model.image}} id="userimg">
+                <div flex></div>
+                
+       
+        </div>
+        
+        <div class="userList" horizontal layout center>
+            <paper-input-decorator label="Mail-Id" floatingLabel="true" >
+                {{input type="text" value=model.email id="mailId" disabled=true}}
             </paper-input-decorator>
-        {{/each}}
-        {{/view}}
+        </div>
     
-    {{/if}}
+        
+        <div class="userList expertise-list">
+        {{#each skill in model.skills}}
+            <div class="tagLabel" {{action 'gotoExpertise' skill}}>
+                #{{skill}}
+            </div>
+        {{/each}}
+        </div>
+       
+    {{/view}}
+
 </div>

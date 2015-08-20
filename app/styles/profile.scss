@@ -6,6 +6,7 @@
     #githubCard {
         padding: 0px;
         margin-top: 20px;
+        border-radius: 5px;
         .githubName {
             margin-left: 20px;
         }
@@ -15,6 +16,7 @@
         .userList {
             padding: 8px 8px;
             margin-top: 0px;
+            border-radius: 5px;
         }
     }
     .subTitleLabelText {
@@ -102,7 +104,7 @@
         min-width: 300px;
         max-width: 400px;
         height: auto;
-        padding : 0px;
+        padding: 0px;
         padding-bottom: 20px;
         transition: none;
         margin: auto;

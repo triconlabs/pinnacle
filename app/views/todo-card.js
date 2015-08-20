@@ -22,7 +22,7 @@ export default Ember.View.extend({
             left: '-300px'
         }, 0);
         this._super();
-    },
+    }/*,
     click: function(evt) {},
     focusOut: function() {
         this.$().animate({
@@ -54,5 +54,5 @@ export default Ember.View.extend({
 
 
 
-    }
+    } */
 });

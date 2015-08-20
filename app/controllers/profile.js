@@ -1,7 +1,7 @@
 import Ember from 'ember';
 export default Ember.Controller.extend({
     needs: ['application'],
-    'editSkill' : false,
+    'editSkill': false,
     'newExpertise': "",
     gender: function(argument) {
         if (this.get('model.gender') == 'Male') {
@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
         return array;
     }.property('model.expertise'),
     actions: {
-        edit : function(){
+        edit: function() {
             this.toggleProperty('editSkill');
         },
         gotoExpertise: function(param) {
@@ -38,6 +38,10 @@ export default Ember.Controller.extend({
                     alert('That page does not exist');
                 }
             })
+        },
+        upload: function() {
+            console.log('upload');
+            Ember.$('#upload').click();
         },
         setProfilePicture: function(e) {
             var _this = this;
@@ -91,7 +95,7 @@ export default Ember.Controller.extend({
                         var key = _this.get('session.sessionStoreKey'),
                             user = _this.get('controllers.application.user');
                         console.log("user saved with new profile pic");
-                        var toastMessage = 'levelled up '+_this.get('newExpertise');
+                        var toastMessage = 'levelled up ' + _this.get('newExpertise');
                         $('#toast').attr('text', toastMessage);
                         Ember.$('#toast')[0].show();
                         var args = JSON.parse(localStorage[key]);

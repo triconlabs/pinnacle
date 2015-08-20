@@ -10,19 +10,12 @@
             <paper-input-decorator label="Password" floatingLabel="true" error="wrong credentials">
                 {{input type="password" value=password id="password" action="login"}}
             </paper-input-decorator>
-            {{#view 'paper-shadow' label="Email" floatingLabel="true" pattern='(\w)@triconinfotech.com' style="display:none"}}
+            {{#view 'paper-shadow' label="Email" floatingLabel="true" pattern='(\w)@triconinfotech.com' style="display:none" }}
                 {{input type="email" value=email id="email"}}
             {{/view}}
         </div>
     {{/view}}
-        {{#view 'slide-in' class="profileInfo"}}
-        <div class="login-name"><span>EXPERTISE</span>
-           <paper-button {{action 'profileInfo'}} raised>get expertise</paper-button>
-        </div>
-        <div layout vertical class="form-wrapper">
-           {{#each skill in model}}
-                {{skill.skill}}
-           {{/each}}
-        </div>
-    {{/view}}
+    
 </div>
+
+<!-- Information skills,profile picture -->

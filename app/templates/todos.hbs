@@ -8,7 +8,6 @@
             </div>
             <div id="infoi" horizontal layout center>
                 {{textarea spellcheck="false" type="text" id="todoInput" value=this.todoInputText action="createTodo" placeholder="What needs to be done?"}}
-                
             </div>
         </div>
         {{#if model}}
@@ -31,12 +30,14 @@
                                             {{/if}}
                                         </li>
                                     </paper-item>
-                                    {{#each tag in todo.tags}}
-                                        <label {{action "gotoExpertise" tag bubbles=false}} class="tag-label" flex> #{{tag}}</label>
-                                    {{/each}}
-                                    <paper-item noink class="todoDescription">
-                                        <label flex>{{todo.description}} </label>
-                                    </paper-item>
+                                    <div>
+                                        {{#each tag in todo.tags}}
+                                            <label {{action "gotoExpertise" tag bubbles=false}} class="tag-label" flex> #{{tag}}</label>
+                                        {{/each}}
+                                        <paper-item noink class="todoDescription">
+                                            <label flex>{{todo.description}} </label>
+                                        </paper-item>
+                                    </div>
                                 {{/view}}
                             {{/with}}
                         {{/each}}
@@ -51,6 +52,29 @@
                     <button id="clear-completed" {{action "clearCompleted"}}>Clear completed</button>
                 {{/if}}
             </footer>
+        {{else}}
+            {{#view 'todo-card' checked=todo.isCompleted}}
+                <paper-item noink class="todoTitle">
+                    <li class="isEditing"  horizontal layout center>
+                        
+                            
+                        
+                            
+                            <label flex>This is a todo with some tags added using '#'</label>
+                            
+                        
+                    </li>
+                </paper-item>
+                <div>
+                    
+                        <label class="tag-label" flex> #info</label>
+                        <label class="tag-label" flex> #userHelp</label>
+                    
+                    <paper-item noink class="todoDescription">
+                        <label flex>This is a description that elaborates the todo.Try adding a todo</label>
+                    </paper-item>
+                </div>
+            {{/view}}
         {{/if}}
     </section>
 </div>
